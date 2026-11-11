@@ -1,0 +1,33 @@
+{
+ "hgeom_match_confirm": true,
+ "neprime_analytic": [
+  [
+   -0.6335777188749065,
+   0.5,
+   0.003
+  ],
+  [
+   -0.6059180581572197,
+   0.5,
+   0.003
+  ],
+  [
+   -0.4364605818451311,
+   0.5,
+   0.003
+  ]
+ ],
+ "neprime_match_confirm": true,
+ "neprime_reach": [
+  0.13589771170447057,
+  0.16926468154491803,
+  0.21853649243149864
+ ],
+ "pair_decisions": [
+  "COMPLETE True (shards 11/11, N 33000/33000)",
+  "DECISION level alpha=0.1: CERTIFIED (sign-IUT, every cell P_C < 0.001; cells 85; eps [0.125, 0.70710679])",
+  "DECISION level alpha=0.05: CERTIFIED (sign-IUT, every cell P_C < 0.001; cells 81; eps [0.13, 0.70710679])",
+  "DECISION level alpha=0.01: CERTIFIED (sign-IUT, every cell P_C < 0.001; cells 68; eps [0.15, 0.70710679])"
+ ],
+ "pair_summary_stdout": "COMPLETE True (shards 11/11, N 33000/33000)\nconfirm root 2026110847: 11 shards, N = 33000, cells 234, delta 0.001, CPU 30390s (0.92s/path), unresolved 0, depths {262144: 28824, 524288: 474, 1048576: 320, 2097152: 340, 4194304: 3042}\nDECISION level alpha=0.1: CERTIFIED (sign-IUT, every cell P_C < 0.001; cells 85; eps [0.125, 0.70710679])\nlevel alpha=0.1 t'=0.4935 eps_lo=0.125: Bernstein(Bonf) 85/85 reach 0.125; sign-IUT 85/85 reach 0.125 max P_C 3.01e-36 (cell 0, eps 0.1250) min K 118 max n+ 1956\n  eps[0.1250,0.1263] mean -0.00358 SE 0.00033 P+ 0.00000 P- 0.00358 UB -0.00005 P_C 3.01e-36\n  eps[0.1343,0.1357] mean -0.00606 SE 0.00043 P+ 0.00003 P- 0.00609 UB -0.00202 P_C 3.16e-59\n  eps[0.1468,0.1485] mean -0.00852 SE 0.00051 P+ 0.00006 P- 0.00858 UB -0.00407 P_C 6.56e-82\n  eps[0.1598,0.1618] mean -0.01221 SE 0.00061 P+ 0.00009 P- 0.01230 UB -0.00725 P_C 8.63e-117\n  eps[0.1777,0.1802] mean -0.01664 SE 0.00071 P+ 0.00015 P- 0.01679 UB -0.01116 P_C 2.39e-157\n  eps[0.2001,0.2033] mean -0.02282 SE 0.00083 P+ 0.00021 P- 0.02303 UB -0.01673 P_C 3.92e-215\n  eps[0.2249,0.2289] mean -0.02752 SE 0.00091 P+ 0.00030 P- 0.02782 UB -0.02102 P_C 5.54e-257\n  eps[0.2619,0.2674] mean -0.03639 SE 0.00105 P+ 0.00055 P- 0.03694 UB -0.02920 P_C 0\n  eps[0.3132,0.3210] mean -0.05821 SE 0.00132 P+ 0.00133 P- 0.05955 UB -0.04962 P_C 0\n  eps[0.3777,0.3891] mean -0.09191 SE 0.00165 P+ 0.00315 P- 0.09506 UB -0.08163 P_C 0\n  eps[0.4929,0.5124] mean -0.15036 SE 0.00214 P+ 0.01145 P- 0.16182 UB -0.13760 P_C 0\n  eps[0.6974,0.7071] mean -0.22615 SE 0.00298 P+ 0.05927 P- 0.28542 UB -0.20906 P_C 0\nDECISION level alpha=0.05: CERTIFIED (sign-IUT, every cell P_C < 0.001; cells 81; eps [0.13, 0.70710679])\nlevel alpha=0.05 t'=0.5378 eps_lo=0.13: Bernstein(Bonf) 81/81 reach 0.13; sign-IUT 81/81 reach 0.13 max P_C 4.91e-48 (cell 0, eps 0.1300) min K 171 max n+ 1354\n  eps[0.1300,0.1314] mean -0.00506 SE 0.00040 P+ 0.00006 P- 0.00512 UB -0.00119 P_C 4.91e-48\n  eps[0.1401,0.1417] mean -0.00664 SE 0.00046 P+ 0.00012 P- 0.00676 UB -0.00246 P_C 5.09e-61\n  eps[0.1519,0.1537] mean -0.00876 SE 0.00052 P+ 0.00012 P- 0.00888 UB -0.00425 P_C 1.26e-81\n  eps[0.1658,0.1680] mean -0.01194 SE 0.00060 P+ 0.00012 P- 0.01206 UB -0.00701 P_C 1.05e-112\n  eps[0.1852,0.1879] mean -0.01642 SE 0.00071 P+ 0.00015 P- 0.01658 UB -0.01097 P_C 2.87e-155\n  eps[0.2062,0.2096] mean -0.02242 SE 0.00082 P+ 0.00021 P- 0.02264 UB -0.01637 P_C 2.85e-211\n  eps[0.2326,0.2370] mean -0.02503 SE 0.00087 P+ 0.00039 P- 0.02542 UB -0.01872 P_C 6.18e-229\n  eps[0.2667,0.2724] mean -0.03394 SE 0.00101 P+ 0.00052 P- 0.03445 UB -0.02692 P_C 1.18e-310\n  eps[0.3201,0.3283] mean -0.05373 SE 0.00127 P+ 0.00103 P- 0.05476 UB -0.04541 P_C 0\n  eps[0.3878,0.3998] mean -0.08324 SE 0.00156 P+ 0.00209 P- 0.08533 UB -0.07342 P_C 0\n  eps[0.4908,0.5101] mean -0.13052 SE 0.00196 P+ 0.00679 P- 0.13730 UB -0.11864 P_C 0\n  eps[0.6939,0.7071] mean -0.19091 SE 0.00268 P+ 0.04103 P- 0.23194 UB -0.17538 P_C 0\nDECISION level alpha=0.01: CERTIFIED (sign-IUT, every cell P_C < 0.001; cells 68; eps [0.15, 0.70710679])\nlevel alpha=0.01 t'=0.6161 eps_lo=0.15: Bernstein(Bonf) 68/68 reach 0.15; sign-IUT 68/68 reach 0.15 max P_C 1.31e-64 (cell 0, eps 0.1500) min K 220 max n+ 470\n  eps[0.1500,0.1518] mean -0.00661 SE 0.00045 P+ 0.00003 P- 0.00664 UB -0.00247 P_C 1.31e-64\n  eps[0.1615,0.1636] mean -0.00809 SE 0.00050 P+ 0.00003 P- 0.00812 UB -0.00371 P_C 2.85e-79\n  eps[0.1749,0.1773] mean -0.01003 SE 0.00055 P+ 0.00003 P- 0.01006 UB -0.00537 P_C 1.91e-98\n  eps[0.1906,0.1935] mean -0.01291 SE 0.00062 P+ 0.00006 P- 0.01297 UB -0.00787 P_C 3.34e-125\n  eps[0.2095,0.2130] mean -0.01642 SE 0.00070 P+ 0.00006 P- 0.01648 UB -0.01099 P_C 6.48e-160\n  eps[0.2325,0.2368] mean -0.01742 SE 0.00072 P+ 0.00009 P- 0.01752 UB -0.01188 P_C 4.13e-168\n  eps[0.2611,0.2665] mean -0.02370 SE 0.00084 P+ 0.00012 P- 0.02382 UB -0.01755 P_C 2.49e-228\n  eps[0.2975,0.3046] mean -0.03261 SE 0.00098 P+ 0.00012 P- 0.03273 UB -0.02574 P_C 2.77e-316\n  eps[0.3457,0.3552] mean -0.04461 SE 0.00114 P+ 0.00030 P- 0.04491 UB -0.03691 P_C 0\n  eps[0.4121,0.4257] mean -0.06133 SE 0.00134 P+ 0.00076 P- 0.06209 UB -0.05265 P_C 0\n  eps[0.5093,0.5301] mean -0.08958 SE 0.00162 P+ 0.00227 P- 0.09185 UB -0.07948 P_C 0\n  eps[0.6928,0.7071] mean -0.11791 SE 0.00200 P+ 0.01424 P- 0.13215 UB -0.10582 P_C 0\n"
+}

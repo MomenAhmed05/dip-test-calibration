@@ -1,0 +1,3 @@
+n=200 shard=9 reps=1000 81.9s
+n=1000 shard=9 reps=400 196.7s
+n=4000 shard=9 reps=100 332.2s

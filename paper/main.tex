@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{xcolor}
+\usepackage{microtype}
+
+\setlist{itemsep=2pt,topsep=4pt}
+\newenvironment{steps}{\begin{enumerate}[label=\textbf{Step \arabic*.},leftmargin=0pt,itemindent=0pt,labelwidth=!,labelsep=0.5em,align=left,itemsep=7pt,topsep=6pt]}{\end{enumerate}}
+\newcommand{\goal}[1]{\par\smallskip\noindent\textit{What we show:} #1\par\smallskip}
+\newcommand{\idea}[1]{\noindent\textit{The idea:} #1\par\smallskip}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ustar}{\mathcal{U}^{*}}
+\newcommand{\GCM}{\operatorname{GCM}}
+\newcommand{\LCM}{\operatorname{LCM}}
+\newcommand{\qbar}{\bar q}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\tier}[1]{\textsc{#1}}
+\newcommand{\authorinput}[1]{\textcolor{red}{[AUTHOR INPUT NEEDED: #1]}}
+
+\title{Flat shoulders break the uniform calibration of the dip test,\\
+and a constant cutoff repairs it}
+\author{\textbf{Moemen Ahmed}\\[4pt]
+\normalsize Independent Researcher\\[4pt]
+\small momen.ashraf.3101@gmail.com\quad$\cdot$\quad ORCID 0009-0002-3464-7067\\[3pt]
+\small Code and data: {\urlstyle{same}\url{https://github.com/MomenAhmed05/dip-test-calibration}}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\input{tex/s0_abstract}
+\input{tex/s1_intro}
+\input{tex/s2_setting}
+\input{tex/s3_mechanism}
+\input{tex/s4_fixed}
+\input{tex/s5_worst}
+\input{tex/s6_finite}
+\input{tex/s7_practice}
+\input{tex/s8_discussion}
+\input{tex/disclosure}
+
+\input{tex/biblio}
+
+\appendix
+\input{tex/appA_proofs}
+\input{tex/appB_cert}
+
+\end{document}

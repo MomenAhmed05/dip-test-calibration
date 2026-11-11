@@ -1,0 +1,3 @@
+n=200 shard=5 reps=1818 108.6s maxviol=3.9e-15 fallbacks=1
+n=400 shard=5 reps=727 136.9s maxviol=2.2e-15 fallbacks=0
+n=800 shard=5 reps=364 124.3s maxviol=1.7e-15 fallbacks=0

@@ -1,0 +1,14 @@
+name = "DipTest"
+version = "0.1.0"
+keywords = ["math"]
+
+# Each file under DipTest/ is self-contained and imports only Mathlib.
+# They are built one by one; there is no root module that imports them all.
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "448388c1098e758aea5d51cb609a6e435a364c88"
+
+[[lean_lib]]
+name = "DipTest"
+globs = ["DipTest.+"]

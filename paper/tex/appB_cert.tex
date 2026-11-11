@@ -1,0 +1,31 @@
+\section{Certification runs}\label{app:cert}
+
+\Cref{tab:runs} lists the confirmatory computations behind the certified numbers. Each run followed a protocol frozen before it started, used fresh seeds, and was run once. Error probabilities are for the whole family in the row; they add across rows by the union bound.
+
+\paragraph{The near-edge computation of \cref{sec:worst}.} For $\varepsilon$ up to $0.136$, $0.169$ and $0.219$ at the levels 10, 5 and 1 percent, four written lemmas bound $g(1-\varepsilon^2,t')-g(1,t')$ from above by an expression in the law of $M$, the excursion and range laws of the bridge, and the face decomposition of the convex minorant of Brownian motion \cite{PUB12}. The expression contains 48 constants that we estimate from $4\cdot10^7$ simulated paths, with a simultaneous error probability of $10^{-4}$. Arb interval arithmetic then shows that the bound is negative on the whole range. The deterministic steps of the four lemmas are checked in Lean.
+
+\paragraph{The middle computation of \cref{sec:worst}.} From $\varepsilon=0.125$, $0.130$ and $0.150$ up to $1/\sqrt2$, the range is divided into 85, 81 and 68 cells. We simulate 33,000 pairs of independent bridges $(b_1,r_2)$ as in \cref{lem:seam}, refined adaptively from their exact conditional laws, and use the same pairs in every cell. For each pair and cell we record $-1$ if the distance at the edge certainly reaches $t'$ while a conservative check shows that $d(H_u,K_{1/2})<t'$ for every $u$ in the cell, $+1$ if the edge distance does not certainly reach $t'$ while the check fails, and $0$ otherwise. The check uses the monotonicity of the seam formula in $\varepsilon$ and exact integer arithmetic, and the expected score is at least $\sup_{u\in\text{cell}}g(u,t')-g(1,t')$. A one-sided exact sign test in each cell, combined across cells by the intersection-union principle, certifies that the expected score is negative in every cell.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Confirmatory certification runs.}
+\label{tab:runs}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.1cm}}
+\toprule
+Quantity & Method & Error probability \\
+\midrule
+$F_M$ on $[1.0,2.2]$ and $c_\alpha$ & Arb ball arithmetic on the stick-breaking representation, explicit series remainder & none (deterministic) \\
+$\qbar_{0.05}$, $\qbar_{0.01}$ & 12,000 bridge paths, $2\cdot10^6$ grid cells, per-path bounds on $D(B)$, order statistics & coverage $\ge0.99$ jointly \\
+$\qbar_{0.10}$ & same method, separate seeds & coverage $\ge0.998$ \\
+Size enclosures, $4\le n\le1000$ & confirmed witness laws (lower ends; exact at $n=4$); envelope of \cref{thm:envelope} by exact linear programs (upper ends) & joint confidence $\ge0.991$ \\
+Cutoffs, $n=4$ & envelope bound with the exact $n=4$ reduction, 100 blocks, $2\cdot10^7$ samples & $\le0.001$ \\
+Cutoffs, $8\le n\le49$ & envelope bound, all 126 cells, $10^5$ samples per cell & $\le0.001$ \\
+Cutoffs, $50\le n\le1600$ & envelope bound, two independent families & $\le0.01$ each, $\le0.02$ together \\
+Edge statement at $t'$ (\cref{thm:worst}) & near edge: written bound, 48 Monte Carlo constants from $4\cdot10^7$ samples, Arb; middle: 33,000 paired paths, sign test per cell, intersection-union & $\le1.1\cdot10^{-3}$ per level, $\le3.1\cdot10^{-3}$ jointly \\
+Edge statement at $c_\alpha$ (\cref{sec:worst}) & cells in $u\in[0.0159,0.9841]$, empirical Bernstein bounds \cite{MP09} with Bonferroni over 72 claims & confidence $\ge0.99$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The development runs that chose the methods and grids used different seeds, which were barred from confirmatory use. Defects found after freezing were logged: a capped calibration constant for one comparator in the power study, an integer overflow in one analysis script, and one run launched before its approval check. The affected runs were repeated or re-analysed, and the defective outputs are kept with the records.

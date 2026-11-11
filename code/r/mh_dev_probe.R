@@ -1,0 +1,16 @@
+# DEV probe (root 2026110825): output format of modeHunting + quick size/power look at m = 20. Not a result.
+source(file.path(Sys.getenv("DIPTEST_R", "code/r"), "mh_global.R"))
+set.seed(2026110825)
+m <- 20
+t0 <- Sys.time()
+cv <- criticalValuesAll(n = m - 2, alpha = 0.05, M = 2000, display = 0, path = NA)
+cat("cv n=", m - 2, ":", cv, " time", format(Sys.time() - t0), "\n")
+x <- c(rnorm(10, 0, 0.3), rnorm(10, 3, 0.3))
+r <- modeHunting(x, crit.vals = cv, min.int = TRUE)
+str(r)
+cat("antimode:", mh_reject(x, cv), "\n")
+rej_u <- mean(replicate(400, mh_reject(runif(m), cv)))
+rej_b <- mean(replicate(400, mh_reject(c(rnorm(10, 0, 1), rnorm(10, 3, 1)), cv)))
+rej_b2 <- mean(replicate(400, mh_reject(c(rnorm(10, 0, 1), rnorm(10, 4, 1)), cv)))
+cat("uniform size", rej_u, " power N(0,1)+N(3,1)", rej_b, " N(0,1)+N(4,1)", rej_b2, "\n")
+t1 <- Sys.time(); for (i in 1:50) mh_reject(runif(49), criticalValuesAll(n = 47, alpha = 0.05, M = 10, display = 0)); cat("dummy\n")

@@ -1,0 +1,95 @@
+{
+ "note": "post-hoc: ramp removed (not unimodal); same rules",
+ "bonferroni_m": 198,
+ "labels": {
+  "uniform": {
+   "label": "demonstrated above tolerance",
+   "worst_law": "pin2.5",
+   "n": 3200,
+   "rate": 0.28814,
+   "ub": 0.295229761312213,
+   "max_ub": 0.295229761312213
+  },
+  "LF": {
+   "label": "certified within tolerance",
+   "worst_law": "pin2.5",
+   "n": 3200,
+   "rate": 0.04022,
+   "ub": 0.04336394143163814,
+   "max_ub": 0.04336394143163814
+  },
+  "learned": {
+   "label": "certified within tolerance",
+   "worst_law": "pin2.5",
+   "n": 3200,
+   "rate": 0.0425,
+   "ub": 0.04572521680840422,
+   "max_ub": 0.04572521680840422
+  },
+  "lam0.25": {
+   "label": "demonstrated above tolerance",
+   "worst_law": "pin2.5",
+   "n": 3200,
+   "rate": 0.1875,
+   "ub": 0.1936333936117876,
+   "max_ub": 0.1936333936117876
+  },
+  "lam0.5": {
+   "label": "demonstrated above tolerance",
+   "worst_law": "pin2.5",
+   "n": 3200,
+   "rate": 0.1172,
+   "ub": 0.12227756134342825,
+   "max_ub": 0.12227756134342825
+  },
+  "lam0.75": {
+   "label": "demonstrated above tolerance",
+   "worst_law": "pin2.5",
+   "n": 3200,
+   "rate": 0.07002,
+   "ub": 0.07407173993558058,
+   "max_ub": 0.07407173993558058
+  }
+ },
+ "best_certified_constant": "LF",
+ "gains_n800_vs_best": [
+  {
+   "law": "mix2.5",
+   "gain": 0.04184,
+   "learned_only": 2092,
+   "baseline_only": 0
+  },
+  {
+   "law": "mix3",
+   "gain": 0.5464,
+   "learned_only": 27320,
+   "baseline_only": 0
+  },
+  {
+   "law": "mix4",
+   "gain": 0.0,
+   "learned_only": 0,
+   "baseline_only": 0
+  },
+  {
+   "law": "mix3.5_0.7",
+   "gain": 0.15014,
+   "learned_only": 7507,
+   "baseline_only": 0
+  },
+  {
+   "law": "twobump",
+   "gain": 0.00894,
+   "learned_only": 447,
+   "baseline_only": 0
+  },
+  {
+   "law": "mix2.2",
+   "gain": 0.0033,
+   "learned_only": 165,
+   "baseline_only": 0
+  }
+ ],
+ "mean_gain_n800": 0.12510333333333332,
+ "learning_helped_(>=2pt)": true
+}

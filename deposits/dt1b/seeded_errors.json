@@ -1,0 +1,143 @@
+{
+ "clean": {
+  "fixtures": true,
+  "quantile": true,
+  "anchor": true,
+  "law": true,
+  "roots": true
+ },
+ "seeded": {
+  "E1 allow_zero=True": {
+   "validators": {
+    "fixtures": false,
+    "quantile": true,
+    "anchor": true,
+    "law": true,
+    "roots": true
+   },
+   "caught": true,
+   "caught_by": [
+    "fixtures"
+   ]
+  },
+  "E2 off-by-one quantile index": {
+   "validators": {
+    "fixtures": true,
+    "quantile": false,
+    "anchor": true,
+    "law": true,
+    "roots": true
+   },
+   "caught": true,
+   "caught_by": [
+    "quantile"
+   ]
+  },
+  "E3 ties dropped before the dip": {
+   "validators": {
+    "fixtures": false,
+    "quantile": true,
+    "anchor": true,
+    "law": true,
+    "roots": true
+   },
+   "caught": true,
+   "caught_by": [
+    "fixtures"
+   ]
+  },
+  "E4 reference at the wrong n (n=2000 used for n=1000)": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "anchor": false,
+    "law": true,
+    "roots": true
+   },
+   "caught": true,
+   "caught_by": [
+    "anchor"
+   ]
+  },
+  "E5 top mass 0.01 instead of 0.1": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "anchor": true,
+    "law": false,
+    "roots": true
+   },
+   "caught": true,
+   "caught_by": [
+    "law"
+   ]
+  },
+  "E6 shoulder slope sign flipped (beta=-1: decreasing shoulder)": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "anchor": true,
+    "law": false,
+    "roots": true
+   },
+   "caught": true,
+   "caught_by": [
+    "law"
+   ]
+  },
+  "E7 noise scale x10 (sd 0.05 added)": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "anchor": true,
+    "law": false,
+    "roots": true
+   },
+   "caught": true,
+   "caught_by": [
+    "law"
+   ]
+  },
+  "E8 confirmation root reused from a DEV run": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "anchor": true,
+    "law": true,
+    "roots": false
+   },
+   "caught": true,
+   "caught_by": [
+    "roots"
+   ]
+  },
+  "E9 same root for reference and draws": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "anchor": true,
+    "law": true,
+    "roots": false
+   },
+   "caught": true,
+   "caught_by": [
+    "roots"
+   ]
+  },
+  "E10 ramp law passed where W is expected (wrong top region)": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "anchor": true,
+    "law": false,
+    "roots": true
+   },
+   "caught": true,
+   "caught_by": [
+    "law"
+   ]
+  }
+ },
+ "catch_rate": "10/10",
+ "clean_all_pass": true
+}

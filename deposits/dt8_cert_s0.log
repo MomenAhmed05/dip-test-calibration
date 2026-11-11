@@ -1,0 +1,7 @@
+acert shard=0 paths=1091 1005.9s mean width 0.00492
+n=50 shard=0 reps=9091 172.2s maxviol=4.1e-15 fallbacks=0
+n=100 shard=0 reps=9091 260.8s maxviol=4.9e-15 fallbacks=1
+n=200 shard=0 reps=9091 523.6s maxviol=5.0e-15 fallbacks=0
+n=400 shard=0 reps=5455 725.2s maxviol=3.2e-15 fallbacks=0
+n=800 shard=0 reps=2728 1001.3s maxviol=5.0e-15 fallbacks=6
+n=1600 shard=0 reps=1364 1509.1s maxviol=3.2e-15 fallbacks=15

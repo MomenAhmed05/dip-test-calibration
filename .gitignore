@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# raw per-shard simulation arrays: the scripts regenerate them from their seed roots
+*.npy
+*.npz
+!deposits/dt1b/dips_f0_n12800.npy
+
+# smoke runs
+deposits/*_quick/
+
+# Lean build output
+lean/.lake/
+
+# LaTeX build output
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

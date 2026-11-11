@@ -1,0 +1,240 @@
+\section{Proofs}\label{app:proofs}
+
+Each proof below starts with what it shows and the idea behind it, and then goes through numbered steps. Each step does one thing. The proofs of \cref{prop:blocks} and \cref{thm:upper} give the full construction; the longer bookkeeping for those two (exact constants in the error terms) is in the supplementary notes.
+
+\subsection{Three facts used throughout}
+Let $I\subseteq J$ be intervals and $h,h_1,h_2$ bounded functions.
+\begin{itemize}[leftmargin=*]
+\item \emph{Restriction.} $V_I(h)\le V_J(h)$, because a convex function on $J$ is also convex on $I$.
+\item \emph{Lines and scale.} Adding a linear function to $h$ does not change $V_I(h)$, and $V_I(ch)=cV_I(h)$ for $c>0$. Adding a line keeps a function convex, and scaling by $c>0$ keeps it convex.
+\item \emph{Lipschitz.} $|V_I(h_1)-V_I(h_2)|\le\sup_I|h_1-h_2|$. Any fit to $h_1$ is a fit to $h_2$ with at most that much more error.
+\end{itemize}
+The same three facts hold for the concave distance $C_I$ and for the dip $D$, and all of these distances are unchanged by an increasing affine change of the variable.
+
+\subsection{Three lemmas}
+
+\begin{lemma}[bridge pieces]\label{lem:pieces}
+For $0<s\le1$, the process $u\mapsto B(su)-uB(s)$, $u\in[0,1]$, has the law of $\sqrt s\,B'$, where $B'$ is a standard Brownian bridge independent of $B(s)$. Pieces of $B$ over disjoint intervals, each with its chord removed, are independent scaled bridges, and they are independent of the values of $B$ at the endpoints. In particular $V_{[0,s]}(B)$ has the law of $\sqrt s\,M/2$.
+\end{lemma}
+
+\goal{that a piece of a bridge looks like a smaller bridge, and that different pieces do not interact.}
+\idea{all the processes involved are centred Gaussian, so independence and the law follow from covariances.}
+
+\begin{proof}
+\begin{steps}
+\item \emph{Covariance with the endpoint value.} For $b(u)=B(su)-uB(s)$,
+\[
+\operatorname{Cov}\bigl(b(u),B(s)\bigr)=su(1-s)-us(1-s)=0 .
+\]
+\item \emph{Covariance of the piece.} For $u\le u'$, $\operatorname{Cov}(b(u),b(u'))=s\,u(1-u')$, which is the covariance of $\sqrt s$ times a standard bridge.
+\item \emph{Disjoint pieces.} The same computation gives zero covariance between pieces over disjoint intervals, and between each piece and the endpoint values. Jointly Gaussian variables with zero covariance are independent.
+\item \emph{The convex distance.} Removing the chord does not change $V$ (it is a linear function), scaling multiplies $V$ by $\sqrt s$, and $V(B')$ has the law of $M/2$ by \cref{lem:halfgap}.\qedhere
+\end{steps}
+\end{proof}
+
+\begin{lemma}[localisation]\label{lem:local}
+Let $F$ have a pinned shoulder on $[0,L]$, fix $\delta\in(0,L)$, and let $\kappa_\delta=C_{[L-\delta,1]}(F)>0$ be as in \cref{def:shoulder}. On the event $E_n=\{\sup|F_n-F|<\kappa_\delta/2\}$,
+\[
+D(F_n)\ \ge\ V_{[0,L-\delta]}(F_n),
+\]
+and $P(E_n)\to1$.
+\end{lemma}
+
+\goal{that once the sample is close to $F$, every good unimodal fit turns to the right of the shoulder, so the dip is at least the convex distance on the shoulder.}
+\idea{a fit that turned inside the shoulder would have to be concave on $[L-\delta,1]$, and the pin keeps every such function far from the data.}
+
+\begin{proof}
+Write $e=\sup|F_n-F|$ and assume $e<\kappa_\delta/2$.
+\begin{steps}
+\item \emph{The dip is small.} $F$ itself is unimodal, so $D(F_n)\le e$.
+\item \emph{Fits that turn early are far away.} A unimodal fit whose turning point is at most $L-\delta$ is concave on $[L-\delta,1]$. Its distance to $F_n$ is therefore at least
+\[
+C_{[L-\delta,1]}(F_n)\ \ge\ \kappa_\delta-e\ >\ e .
+\]
+\item \emph{Good fits turn late.} Take fits $g_k$ whose distance to $F_n$ decreases to $D(F_n)\le e$. By Step 2 these fits eventually turn to the right of $L-\delta$, so they are convex on $[0,L-\delta]$, and their distance to $F_n$ is at least $V_{[0,L-\delta]}(F_n)$. Letting $k\to\infty$ gives the inequality. We never need an optimal fit to exist.
+\item \emph{The event is likely.} $P(E_n)\to1$ by the Glivenko--Cantelli theorem.\qedhere
+\end{steps}
+\end{proof}
+
+\begin{lemma}[seam decoupling]\label{lem:seam}
+Fix $u\in(0,1)$ and put
+\[
+b_1(s)=\frac{B(us)-sB(u)}{\sqrt u},\qquad r_2(s)=\frac{B\bigl(u+(1-u)s\bigr)-(1-s)B(u)}{\sqrt{1-u}},\qquad s\in[0,1].
+\]
+Then $b_1$, $r_2$ and $B(u)$ are independent, and $b_1$ and $r_2$ are standard bridges. Moreover $d(B,K_u)=d(H_u,K_{1/2})$, where $H_u(s)=\sqrt u\,b_1(2s)$ for $s\le\frac12$ and $H_u(s)=\sqrt{1-u}\,r_2(2s-1)$ for $s\ge\frac12$. At the edge put $H_1(s)=b_1(2s)$ for $s\le\frac12$ and $H_1(s)=0$ for $s\ge\frac12$; then $d(H_1,K_{1/2})=V(b_1)$, which has the law of $d(B,K_1)$. With one fixed pair $(b_1,r_2)$, the formula for $H_u$ defines all $u\in[\frac12,1]$ at once, each with the correct law, and $u\mapsto H_u$ is continuous in the supremum norm.
+\end{lemma}
+
+\goal{that cutting the bridge at the turning point $u$ leaves two independent bridges, and that the distance to $K_u$ depends only on them.}
+
+\begin{proof}
+\begin{steps}
+\item \emph{Independence.} The covariance computation is the one in \cref{lem:pieces}.
+\item \emph{Removing the value at $u$.} The broken line through $(0,0)$, $(u,B(u))$ and $(1,0)$ is linear on each side of $u$. Adding it to a member of $K_u$ gives another member, so subtracting it from $B$ does not change the distance to $K_u$.
+\item \emph{Moving the turning point to $\frac12$.} The increasing affine maps $[0,\frac12]\to[0,u]$ and $[\frac12,1]\to[u,1]$ carry $K_u$ onto $K_{1/2}$ and keep supremum distances.\qedhere
+\end{steps}
+\end{proof}
+
+\subsection{Proof of \cref{thm:shoulder} (pinned shoulders)}
+
+\goal{that the dip of a sample from a law with a pinned shoulder of mass $p$ is, in the limit, at least $\sqrt p\,M/2$.}
+\idea{on the shoulder the fit must be convex (\cref{lem:local}); there $F$ is a line, so the convex distance of the data is the convex distance of the empirical fluctuation, which converges to a piece of a Brownian bridge.}
+
+\begin{proof}
+Fix $\delta\in(0,L)$ and write $J=[0,L-\delta]$.
+\begin{steps}
+\item \emph{Remove $F$.} $F$ is linear on $J$, and adding a line does not change $V_J$, so
+\[
+\sqrt n\,V_J(F_n)=V_J\bigl(\sqrt n(F_n-F)\bigr).
+\]
+\item \emph{Pass to the limit.} $V_J$ is Lipschitz for the supremum distance, and $\sqrt n(F_n-F)$ converges in law to $B\circ F$ by Donsker's theorem. By the continuous mapping theorem, $\sqrt nV_J(F_n)$ converges in law to $V_J(B\circ F)$.
+\item \emph{Identify the limit.} After the change of variable $u=F(x)$, $V_J(B\circ F)=V_{[0,p_\delta]}(B)$ with $p_\delta=F(L-\delta)$. By \cref{lem:pieces} this has the law of $\sqrt{p_\delta}\,M/2$.
+\item \emph{Combine with localisation.} \Cref{lem:local} says $\sqrt nD_n\ge\sqrt nV_J(F_n)$ on an event of probability tending to one. The portmanteau theorem for the open set $(t,\infty)$ then gives
+\[
+\liminf_n P\bigl(\sqrt nD_n>t\bigr)\ \ge\ P\bigl(\sqrt{p_\delta}\,M/2>t\bigr).
+\]
+\item \emph{Let $\delta\to0$.} As $\delta$ decreases, $p_\delta$ increases to $p$, and the events $\{\sqrt{p_\delta}\,M/2>t\}$ increase to $\{\sqrt p\,M/2>t\}$.\qedhere
+\end{steps}
+\end{proof}
+
+\emph{Proof of \cref{cor:shoulder}.} Fix $\eta>0$. Quantile convergence gives $\sqrt n\,q_n(1-\alpha)<\qbar_\alpha+\eta$ for all large $n$, so then $\{\sqrt nD_n>\qbar_\alpha+\eta\}\subseteq\{D_n\ge q_n(1-\alpha)\}$. The theorem at $t=\qbar_\alpha+\eta$ gives a limiting rejection rate of at least $1-F_M\bigl(2(\qbar_\alpha+\eta)/\sqrt p\bigr)$, and letting $\eta\to0$ gives the corollary, because $F_M$ is continuous.
+
+\subsection{Proof of \cref{thm:fail} (the uniform calibration fails)}
+
+\goal{that for every $\alpha$ some fixed two-step law is rejected with limiting probability above $\alpha$, using no numerical facts.}
+\idea{as the shoulder mass tends to one, \cref{thm:shoulder} pushes the rejection rate up to $P(V(B)>q)$, while the uniform cutoff $q$ was built for $D(B)$. Since $D(B)\le V(B)$, it is enough to show that $V(B)$ is strictly larger than $D(B)$ with positive probability, in a way that crosses $q$.}
+
+\begin{proof}
+Let $H$ be the distribution function of $D(B)$ and let $q^+=\inf\{x:H(x)>1-\alpha\}$ be its upper $(1-\alpha)$ quantile.
+\begin{steps}
+\item \emph{The cutoff is positive.} A uniform limit of functions that are convex and then concave is again convex and then concave, so it is differentiable almost everywhere. A Brownian bridge is almost surely nowhere differentiable, so $D(B)>0$ almost surely. Hence $H(0)=0$ and $q^+>0$.
+\item \emph{Rejection above any level beyond $q^+$.} Take a continuity point $x>q^+$ of $H$. Then $H(x)>1-\alpha$, and since $P_U(\sqrt nD_n\le x)\to H(x)$ under the uniform law, eventually $\sqrt n\,q_n(\alpha)\le x$. From then on $\{\sqrt nD_n>x\}\subseteq\{D_n>q_n(\alpha)\}$.
+\item \emph{Reduce to one bridge.} By \cref{thm:shoulder} with $p=1-w$, the limiting rejection rate under $W(w,\varepsilon)$ is at least $P(\sqrt{1-w}\,V(B)>x)$. Letting $x$ decrease to $q^+$ through continuity points, and then letting $w$ decrease to $0$, shows that it is enough to prove
+\[
+P\bigl(V(B)>q^+\bigr)>\alpha .
+\]
+Some small fixed $w$, with any $0<\varepsilon<w$, then gives the theorem.
+\item \emph{$V(B)$ has no atoms.} We show that $P(V(B)=q)=0$ for every $q>0$. For a continuous $h$, $2V(h)$ is the supremum of the chord defect $h(t)-[(b-t)h(a)+(t-a)h(b)]/(b-a)$ over $0\le a<t<b\le1$; the defect extends continuously by $0$ to degenerate triples, so on the compact set of triples the supremum is attained, and when it is positive it is attained at a non-degenerate triple. Let $f_0(t)=t(1-t)$, $Z=6\int_0^1B$ and $R=B-Zf_0$. A covariance computation shows that $Z$ is a non-degenerate Gaussian variable independent of $R$. The chord defect of $f_0$ is $(t-a)(b-t)>0$, so $z\mapsto V(R+zf_0)$ is strictly increasing wherever it is positive. Each level $q>0$ is therefore reached for at most one value of $z$, and conditioning on $R$ gives $P(V(B)=q)=0$.
+\item \emph{Split the event.} A convex function is an admissible unimodal fit, so $D(B)\le V(B)$ on every path. Since $H(q^+-)\le1-\alpha$, we have $P(D(B)\ge q^+)\ge\alpha$. Using Step 4,
+\[
+P\bigl(V(B)>q^+\bigr)\ \ge\ P\bigl(D(B)\ge q^+\bigr)+P\bigl(V(B)>q^+>D(B)\bigr)\ \ge\ \alpha+P\bigl(V(B)>q^+>D(B)\bigr).
+\]
+\item \emph{The last probability is positive.} Choose $0<\eta<q^+$ and $K$ with $K/8>q^++\eta$, and let $f(u)=Ku(1-u)$. This arch is concave, so $C(f)=0$, and its convex distance is $V(f)=K/8$. A Brownian bridge comes within $\eta$ of $f$ with positive probability, and on that event the Lipschitz property gives $V(B)>q^+$ and $D(B)\le C(B)<\eta<q^+$.\qedhere
+\end{steps}
+\end{proof}
+
+\subsection{Proof of \cref{prop:blocks} (step densities)}
+
+\goal{the exact limit of $\sqrt nD_n$ for a unimodal step density.}
+\idea{perturb $F$ by a small multiple $r$ of a continuous function $h$ and find the first-order change of the dip. On each block left of the mode the fit must be convex, on each block right of it concave, and on the modal block it may turn. The difficulty is to join the separate fits into one unimodal function without losing anything.}
+
+For a continuous $h$ with $h(0)=h(1)=0$, write $\tau_i(h)$ for the convex distance of $h$ on block $i$ if the block lies left of the mode, the concave distance if it lies right of the mode, and the dip of $h$ restricted to the block if it is the modal block (with the turning point allowed anywhere in the block). The claim is
+\[
+\lim_{r\to0}\frac{D(F+rh_r)}{r}=\max_i\tau_i(h)\qquad\text{whenever }h_r\to h\text{ uniformly}.
+\]
+By the Lipschitz fact we may take $h_r=h$. Two quantities control the join in the upper bound below. The distance $\eta=\sqrt r$ keeps the turning point of the modal fit away from the ends of the modal block, which leaves room to hand over from one piece to the next; it is large compared with $r$ but tends to zero. The gap $\Delta$ between adjacent heights must exceed $2rK$, so that each straight-line extension of a piece falls away from $F$ outside its own block.
+
+\begin{proof}
+\begin{steps}
+\item \emph{Lower bound.} $F$ is linear on each block, so on the modal block the dip of $F+rh$ is $r$ times the dip of $h$, and every unimodal fit restricted to that block is admissible there. For a block left of the mode, $F$ has a convex kink at the block's right end. The argument of \cref{lem:local} shows that, once $r$ is small, good fits turn to the right of that kink, so $D(F+rh)\ge r$ times the convex distance of $h$ on the block shortened by $\delta$. Letting $\delta\to0$ gives $\tau_i(h)$. Blocks right of the mode are the mirror image.
+\item \emph{Upper bound: the pieces.} Replace $h$ by a $K$-Lipschitz function within $\epsilon'$ of it and let $d=\max_i\tau_i$ for that function. On each block take a $K$-Lipschitz fit attaining the block's distance: convex on the left blocks, concave on the right blocks, and convex-then-concave on the modal block with turning point $\mu$. Move $\mu$ at least $\eta=\sqrt r$ away from the ends of the modal block; this costs at most $K\eta$.
+\item \emph{Upper bound: the join.} Extend each convex piece $F+rg_i$ beyond its block by lines whose slopes differ from the block's density by $rK$. On $[0,\mu]$ take the largest of the convex pieces and on $[\mu,1]$ the smallest of the concave ones. Adjacent densities differ by a fixed amount $\Delta$, larger than $2rK$ for small $r$, so each extension stays within $r(d+\epsilon'+K\eta)$ of $F+rh$ outside its block. At $\mu$ the modal pieces exceed the others by $(\Delta-2rK)\eta-O(r)>0$, so the joined function is unimodal with turning point $\mu$, and its distance to $F+rh$ is at most $r(d+\epsilon'+K\eta)$. Let $r\to0$ and then $\epsilon'\to0$.
+\item \emph{The limit law.} On a Skorohod representation in $D[0,1]$ with the $J_1$ topology \cite{Billingsley99}, $h_n=\sqrt n(F_n-F)\to B\circ F$ uniformly almost surely. Steps 1 to 3 with $r=n^{-1/2}$ give $\sqrt nD(F_n)\to\max_i\tau_i(B\circ F)$. On block $i$, $B\circ F$ is a bridge over a probability interval of length $p_i$, and with chords removed these pieces are independent scaled bridges by \cref{lem:pieces}.\qedhere
+\end{steps}
+\end{proof}
+
+Step 3 needs a fixed gap $\Delta$ between adjacent heights. If two heights differ only by order $r$, the two blocks act as one shoulder: for three equal blocks with densities $\frac12\mp r\kappa/2$ and $2$, and a suitable piecewise linear $h$, every separate block term is zero while $D(F_r+rh)/r$ has a positive limit.
+
+\subsection{Proof of \cref{thm:upper} (upper bound)}
+
+\goal{that for every law in $\cC$ the limit of $\sqrt nD_n$ is no larger than $M/2$ in distribution.}
+\idea{where $F$ is strictly curved it bends away from its tangent lines quadratically, and that curvature absorbs a perturbation of size $r$ at no first-order cost; only the flat stretches, where $F$ is a straight line, make the fit pay for the perturbation. So we bound the first-order change of the dip by the distances of $h$ on the flat stretches, and then compare all of those with the convex distance of one Brownian path. As in \cref{prop:blocks}, the work is in joining the left and right fits at the mode, and a general law forces us to treat three shapes of mode separately.}
+
+Write $P=[m_1,m_2]$ for the modal set. Let $T_F(h)$ be the largest of three numbers: the supremum of the convex distances of $h$ over the maximal flat stretches inside $[0,m_1]$, the dip of $h$ on $P$ (zero if $m_1=m_2$), and the supremum of the concave distances over the maximal flat stretches inside $[m_2,1]$. There may be countably many stretches, so these are suprema. The deterministic claim is
+\[
+\limsup_{r\to0}\frac{D(F+rh_r)}{r}\ \le\ T_F(h)\qquad\text{whenever }h_r\to h\text{ uniformly}.
+\]
+After an approximation that changes both sides by at most $\epsilon$, we may take $h_r=h$ with $h$ smooth and $|h'|\le K$. Write $F_r=F+rh$.
+
+\paragraph{Three tools.}
+\begin{enumerate}[label=(T\arabic*),leftmargin=*,itemsep=4pt]
+\item \emph{Seam shift.} If $g_1$ is convex on $[0,\mu]$, $g_2$ is concave on $[\mu,1]$, both are within $e$ of $F_r$, and $g_1(\mu)-g_2(\mu)\le\delta$, then $D(F_r)\le e+\max(\delta,0)/2$. Lowering $g_1$ and raising $g_2$ by half the mismatch joins them.
+\item \emph{Endpoint fit.} For a continuous $\psi$ on $[0,a]$, the function $\GCM(\psi)+V_{[0,a]}(\psi)$ is convex, lies within $V_{[0,a]}(\psi)$ of $\psi$, and has left slope at $a$ at most any $s$ with $\psi(a)-\psi(x)\le s(a-x)$ for all $x<a$. This controls how steeply a fit leaves an interval.
+\item \emph{One-sided limit.} If $F$ is convex on an interval $I$, then $V_I(F+rh)/r$ converges to the largest convex distance of $h$ over the maximal flat stretches inside $I$. No curvature condition is needed, and the stretches may accumulate. This is a form of the directional derivative of Beare and Fang \cite{BF17}; the concave case is the mirror image.
+\end{enumerate}
+
+\paragraph{Case A: a modal interval ($m_1<m_2$).} Let $f$ be the monotone one-sided density, $f^*$ its value on $P$, $\ell_P$ the linear function equal to $F$ on $P$, and $T_L$, $T_R$ the left and right parts of $T_F(h)$. 
+
+The plan is to use the best turning fit on the flat top $P$, the best convex fit on everything to its left, and the mirror on the right, and to make sure that the left fit hands over to the top fit before the turning point is reached. Four constants control this. The width $\eta$ keeps the turning point of the top fit at least $\eta$ inside $P$, so that there is room to hand over. The factor $\lambda<1$ squeezes the top fit slightly, which makes its end slopes finite. The constant $M'$ decides how far the density must fall below its peak value $f^*$ before we stop using the top fit; it defines a window around $P$ that shrinks to $P$ as $r\to0$. The condition that $(M'-2K)\eta$ is large guarantees that, at the turning point, the extended left fit lies well below the top fit, so taking the larger of the two selects the top fit there. The order of choices matters: first $\epsilon$ and $h$ (which fix the Lipschitz constant $K$), then $\eta$ with $2\eta<m_2-m_1$, then the top fit, then $M'$, and only then $r\to0$.
+\begin{steps}
+\item \emph{Modal fit.} Take a convex-then-concave fit $\varphi$ of $h$ on $P$ with error at most $D_P(h)+\epsilon$. Squeezing it towards the centre $c$ of $P$, $x\mapsto\varphi(c+\lambda(x-c))$ with $\lambda<1$, costs at most $K(1-\lambda)|P|$ and makes its end slopes bounded, say by $\bar\sigma$. Replacing it by its chord near each end of $P$ costs at most $2K\eta$ and puts its turning point $\tau$ in $[m_1+\eta,m_2-\eta]$. Call the resulting error $E$.
+\item \emph{Isolate the region where the modal fit is needed.} Fix $M'>\bar\sigma+2K$ so large that $(M'-2K)\eta>T_L+T_R+E+2$, and let $[a_r,b_r]=\{f\ge f^*-rM'\}$. Since $f<f^*$ off $P$, the window shrinks to $P$. On it use $w=\ell_P+r\varphi$, with $\varphi$ extended linearly beyond $P$. Its error there is at most $rE+o(r)$, and left of $a_r$ it lies below $F_r$ plus $rE+o(r)$, because the density of $F$ there is below $f^*-rM'$.
+\item \emph{Build the left fit and keep its extension below the modal fit.} On $[0,a_r]$ take the endpoint fit (T2) of $F_r$. Its error is $re_L$ with $e_L\le V_{[0,m_1]}(F_r)/r=T_L+o(1)$ by (T3). Every chord slope of $F_r$ on $[0,a_r]$ is at most $f^*-rM'+rK$, so (T2) bounds its final slope by the same number. Extended linearly up to $\tau$, it stays within $re_L+o(r)$ above $F_r$, and at $\tau$ it lies at least $r(M'-2K)\eta-re_L-o(r)$ below $F_r$, which is further below than $w$ can be.
+\item \emph{Join without paying another first-order error.} On $[0,\tau]$ let $G_1$ be the larger of the left fit and $w$. Both are convex, so $G_1$ is convex; it is within $r(\max(T_L,E)+o(1))$ of $F_r$, and $G_1(\tau)=w(\tau)$. The mirror construction gives a concave $G_2$ on $[\tau,1]$ with $G_2(\tau)=w(\tau)$. The two meet without a seam shift, so
+\[
+D(F_r)\ \le\ r\bigl(T_F(h)+O(\epsilon+\eta+1-\lambda)\bigr)+o(r).
+\]
+\end{steps}
+
+\paragraph{Case B: a point mode where the density jumps.} Say $f(m-)<f(m+)<\infty$; the other direction is the mirror image.
+\begin{steps}
+\item \emph{Place the seam just right of the mode.} Put $\mu=m+\eta_r$ with $\eta_r/r\to\infty$ and $\eta_r\,\omega(2\eta_r)=o(r)$, where $\omega(\eta)=f(m+)-f(m+\eta)$.
+\item \emph{Two one-sided fits.} On $[0,m]$ use the endpoint fit (T2), extended linearly. On $[\mu,1]$ use the concave fit $\LCM_{[\mu,1]}(F_r)-C_{[\mu,1]}(F_r)$, extended to the left of $\mu$ by its tangent.
+\item \emph{Join.} The jump gives a margin of order $\eta_r(f(m+)-f(m-))$, much larger than $r$, so the convex piece lies below the tangent at $\mu$ and the two pieces join into a unimodal function with error $r\max(T_L,T_R)+o(r)$.
+\end{steps}
+
+\paragraph{Case C: a point mode with no flat stretch ending at it.}
+\begin{steps}
+\item \emph{Flatten $h$ at the mode.} Replace $h$ by the constant $h(m)$ on $[m-\rho,m+\rho]$. This moves $T_F$ by at most the oscillation of $h$ there, and makes $F_r$ exactly convex on $[m-\rho,m]$ and concave on $[m,m+\rho]$.
+\item \emph{The minorant hugs $F_r$ near the mode.} Choose $a<c<m$ in that range with $f(a)<f(c-)$ and $f$ not constant on $[c,m)$. For small $r$, supporting lines of $F$ at points of $[c,m]$ lie below $F_r$ on $[0,m]$, so the greatest convex minorant of $F_r$ on $[0,m]$ equals $F_r$ on $[c,m]$.
+\item \emph{Far fit and join.} The fit $\GCM_{[0,m]}(F_r)+V_{[0,m]}(F_r)$ on $[0,c]$, extended beyond $c$ with slope $f(c-)$, ends below $F_r(m)$ by a fixed amount. Its maximum with the minorant is convex, within $V_{[0,m]}(F_r)$ of $F_r$, and equal to $F_r$ at $m$. The mirror construction meets it exactly at $m$, and (T3) gives $V_{[0,m]}(F_r)/r\to T_L$.
+\end{steps}
+A mode at an end of the support is covered directly by (T3), and every law in $\cC$ falls into one of the three cases.
+
+\paragraph{From the deterministic bound to the theorem.}
+\begin{steps}
+\item \emph{Almost sure bound.} Regard $h_n=\sqrt n(F_n-F)$ as a random element of $D[0,1]$ with the $J_1$ topology and use a Skorohod representation, under which $h_n\to B\circ F$ uniformly almost surely. With $r=n^{-1/2}$, the deterministic bound gives $\limsup_n\sqrt nD_n\le T_F(B\circ F)$ almost surely, and the reverse Fatou lemma gives
+\[
+\limsup_nP\bigl(\sqrt nD_n>c\bigr)\ \le\ P\bigl(T_F(B\circ F)\ge c\bigr).
+\]
+\item \emph{One Brownian path.} On a flat stretch $J$ of positive mass, the convex distance of $B\circ F$ on $J$ equals that of $B$ on $F(J)$; stretches of zero mass contribute nothing. Let $W$ be a Brownian motion on $[0,1]$. By \cref{lem:pieces}, the terms of $T_F(B\circ F)$ can be realised jointly, in law, as convex distances of $W$ over disjoint intervals, after flipping the sign of the pieces right of the mode, with the modal term realised as a dip of $W$, which is at most a convex distance of $W$.
+\item \emph{Compare with the whole path.} Each of these convex distances is at most $V_{[0,1]}(W)$, which has the law of $M/2$. Hence $P(T_F(B\circ F)\ge c)\le1-F_M(2c)$, which proves \cref{thm:upper}.
+\end{steps}
+
+\subsection{Proof of \cref{thm:envelope} (domination)}
+
+\goal{that the dip of a sample from any continuous unimodal $F$ is at most the distance from the transformed uniform sample to the fits that turn at $u=F(m)$.}
+\idea{a fit to the uniform sample becomes a fit to the original sample when it is composed with $F$, and composition preserves convexity provided the fit is nondecreasing.}
+
+\begin{proof}
+Let $\varphi\in K_u$ be within $e$ of $\Gamma_n$.
+\begin{steps}
+\item \emph{Make the fit nondecreasing.} Let $r$ minimise $\varphi$ on $[0,u]$ and $r'$ maximise it on $[u,1]$. Replace $\varphi$ by the constant $\varphi(r)$ on $[0,r]$ and by $\varphi(r')$ on $[r',1]$. The new function $\tilde\varphi$ is nondecreasing, still convex on $[0,u]$ and concave on $[u,1]$, and still within $e$ of $\Gamma_n$, because $\Gamma_n$ is nondecreasing.
+\item \emph{Compose with $F$.} $G=\tilde\varphi\circ F$ is convex on $(-\infty,m]$, as a nondecreasing convex function of a convex function, and concave on $[m,\infty)$ for the mirror reason. Since $F_n=\Gamma_n\circ F$, $\sup|F_n-G|\le e$.
+\item \emph{Check that $G$ is an admissible fit.} Map an interval containing the sample affinely onto $[0,1]$ and make $G$ constant outside it. The result is a fit of the kind in \cite[Theorem~1]{HH85} and is still within $e$ of $F_n$, so $D(F_n)\le e$. Taking the infimum over $\varphi$ proves the inequality.
+\item \emph{Reflection.} The map $x\mapsto-x$ keeps the dip and replaces $u$ by $1-u$, so it is enough to consider $u\ge\frac12$.
+\item \emph{A computable bound.} Split $[\frac12,1]$ into blocks. The true $u$ lies in one block, so the rejection probability is at most the largest, over blocks, of the probability that $\sup_{u'}d(\Gamma_n,K_{u'})$ over the block exceeds the cutoff. If $u$ lies between consecutive order statistics $a$ and $b$ of the uniform sample, the continuous functions that are convex on $[0,b]$ and concave on $[a,1]$, and hence linear on $[a,b]$, belong to $K_u$. Their distance to $\Gamma_n$ is a linear program in the values at $0,x_{(1)},\dots,x_{(n)},a,b,1$, and the largest of these programs over a block bounds the block term for every sample.\qedhere
+\end{steps}
+\end{proof}
+
+\subsection{Proof of \cref{thm:reduction} (Brownian reduction)}
+
+\goal{that in large samples the worst rejection probability over all laws lies between the edge value and the worst turning point of a Brownian bridge.}
+\idea{\cref{thm:envelope} turns every law into a uniform sample, a strong approximation turns the uniform sample into a Brownian bridge, and the only delicate point is that the approximation must work for all turning points at once.}
+
+\begin{proof}
+\begin{steps}
+\item \emph{Lower bound.} This is \cref{thm:shoulder} with $p\to1$.
+\item \emph{Reduce to uniform samples.} By \cref{thm:envelope} and reflection, with $Z_n=\sqrt n(\Gamma_n-\mathrm{id})$,
+\[
+\sup_FP_F\bigl(\sqrt nD_n>t\bigr)\ \le\ \sup_{u\in[1/2,1]}P\bigl(d(Z_n,K_u)>t\bigr).
+\]
+This step is exact because $K_u$ is a cone and adding a linear function to a member of $K_u$ gives another member.
+\item \emph{Couple with bridges.} Take versions of $Z_n$ and of Brownian bridges $B_n$ on one probability space with $\sup|Z_n-B_n|\to0$ in probability \cite{KMT75}. Since $d(\cdot,K_u)$ is Lipschitz for every $u$, for each $\eta>0$ and uniformly in $u$,
+\[
+P\bigl(d(Z_n,K_u)>t\bigr)\ \le\ P\bigl(d(B,K_u)>t-\eta\bigr)+o(1).
+\]
+So the limit superior is at most $\sup_ug(u,t)+\sup_uP\bigl(t-\eta<d(B,K_u)<t\bigr)$.
+\item \emph{No atoms for a single $u$.} For fixed $u$, $d(H_u,K_{1/2})$ is a convex function of the Gaussian process $H_u$ of \cref{lem:seam}. By Ehrhard's inequality, $\Phi^{-1}\bigl(P(d\le t)\bigr)$ is concave in $t$ where it is finite, which rules out an atom at any $t>0$.
+\item \emph{No atoms uniformly in $u$.} Suppose the last term in Step 3 did not vanish as $\eta\to0$. Then there would be $u_k\to u^*$ and $\eta_k\to0$ with $P(t-\eta_k<d(B,K_{u_k})<t)\ge\epsilon_0>0$. Under the coupling of \cref{lem:seam}, which includes the edge $u=1$, $u\mapsto d(H_u,K_{1/2})$ is continuous on $[\frac12,1]$ because $d(\cdot,K_{1/2})$ is Lipschitz, so $d(B,K_{u_k})\to d(B,K_{u^*})$ almost surely, and then $P(d(B,K_{u^*})=t)\ge\epsilon_0$, which contradicts Step 4.\qedhere
+\end{steps}
+\end{proof}

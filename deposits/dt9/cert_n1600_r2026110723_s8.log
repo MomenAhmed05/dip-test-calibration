@@ -1,0 +1,3 @@
+n=1600 shard=8 chunk=0 310.4s lps=3013 fb=2 rep=1.4e-07
+n=1600 shard=8 chunk=1 315.8s lps=2988 fb=10 rep=1.6e-07
+n=1600 shard=8 chunk=2 288.2s lps=2721 fb=10 rep=2.1e-07

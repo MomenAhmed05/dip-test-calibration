@@ -1,0 +1,3 @@
+[     37s] adv 2 mode 22 init 2: re-est learned 4.45% at n=3200 (LF 0.24%, U 6.29%)
+[     69s] adv 10 mode 110 init 1: re-est learned 10.39% at n=800 (LF 0.53%, U 10.45%)
+[    104s] adv 18 mode 199 init 0: re-est learned 7.82% at n=800 (LF 0.30%, U 8.30%)

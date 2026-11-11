@@ -1,0 +1,120 @@
+{
+ "repair_exact": {
+  "trials": 80,
+  "with_violations": 80,
+  "bad_shape": 0,
+  "bad_bound": 0
+ },
+ "adversarial": {
+  "fail_rate_0.5": 0,
+  "fail_rate_1.0": 0,
+  "equality_reported_exceed": 0,
+  "decision_no_brute_yes_at_v(1-1e-9)": 2
+ },
+ "decision_vs_brute": {
+  "checks": 4100,
+  "mismatches": 6,
+  "detail": [
+   {
+    "n": 100,
+    "block": [
+     0.5,
+     0.9
+    ],
+    "decision": false,
+    "brute_v": 0.033264380678959586,
+    "t": 0.03326438064569521,
+    "v_minus_t": 3.326437736372867e-11,
+    "root_ub": 0.03326438063926027,
+    "npieces": 44
+   },
+   {
+    "n": 200,
+    "block": [
+     0.995,
+     1.0
+    ],
+    "decision": false,
+    "brute_v": 0.019651899146949495,
+    "t": 0.019651899127297597,
+    "v_minus_t": 1.9651898164330106e-11,
+    "root_ub": 0.019651899140359624,
+    "npieces": 4
+   },
+   {
+    "n": 200,
+    "block": [
+     0.5,
+     0.9
+    ],
+    "decision": false,
+    "brute_v": 0.03768978832295245,
+    "t": 0.03768978828526266,
+    "v_minus_t": 3.768978878992968e-11,
+    "root_ub": 0.03768978836100372,
+    "npieces": 80
+   },
+   {
+    "n": 200,
+    "block": [
+     0.5,
+     0.9
+    ],
+    "decision": false,
+    "brute_v": 0.031356644958795296,
+    "t": 0.03135664492743865,
+    "v_minus_t": 3.1356646446045744e-11,
+    "root_ub": 0.03135664490696912,
+    "npieces": 90
+   },
+   {
+    "n": 200,
+    "block": [
+     0.5,
+     0.9
+    ],
+    "decision": false,
+    "brute_v": 0.049943811421938655,
+    "t": 0.04994381137199484,
+    "v_minus_t": 4.994381297418471e-11,
+    "root_ub": 0.049943811571282665,
+    "npieces": 60
+   },
+   {
+    "n": 200,
+    "block": [
+     0.9,
+     0.97
+    ],
+    "decision": false,
+    "brute_v": 0.049943811565350826,
+    "t": 0.04994381151540701,
+    "v_minus_t": 4.994381297418471e-11,
+    "root_ub": 0.04994381121815052,
+    "npieces": 22
+   }
+  ]
+ },
+ "repair_max": 1.5615978304900342,
+ "ub_minus_dt8_value": [
+  1.6949636139074187e-13,
+  5.597863284023674e-10
+ ],
+ "injected_failures": {
+  "checks": 720,
+  "true_exceed_reported_none": 3
+ },
+ "speed": {
+  "800": {
+   "sec_per_sample": 0.2750146150588989,
+   "lps_per_sample": 6.325,
+   "edge_exceed_rate": 0.05
+  },
+  "1600": {
+   "sec_per_sample": 1.06706360578537,
+   "lps_per_sample": 10.1,
+   "edge_exceed_rate": 0.1
+  }
+ },
+ "max_repair_overall": 1.5615978304900342
+}

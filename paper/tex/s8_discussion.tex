@@ -1,0 +1,12 @@
+\section{Discussion}\label{sec:discussion}
+
+The claim that the uniform law is the worst case for the dip fails once flat stretches are allowed. When the density can stay flat over a long interval and then rise sharply, the fit loses the freedom to choose its turning point on that interval, and the dip stops behaving like the uniform limit $D(B)$ and starts behaving like $M/2$, half the largest gap between a Brownian bridge and its convex minorant. Everything else in the paper measures the consequences of that change of limit. For fixed laws, the standard 5 percent test can reject about 30 percent of unimodal samples in large samples, and no law in the class $\cC$ pushes it further. Replacing the uniform cutoff by $c_\alpha/\sqrt n$ restores the level in the limit, and no deterministic sequence of cutoffs with a smaller limit does. When the worst law is allowed to change with $n$, the worst-case size lies in the same certified intervals. The $n=4$ counterexample of Hartigan and Hartigan was an early view of the same effect.
+
+\paragraph{Limitations.} Three points affect how far the results can be relied on.
+\begin{itemize}[leftmargin=*]
+\item \emph{Conditional results.} \Cref{thm:worst} and the uniform statement about $c_\alpha$ in \cref{sec:worst} rest on written lemmas, on published laws, and on certificates with stated error probabilities. They are not theorems in the usual sense.
+\item \emph{Width.} The size intervals are about five points wide at the 5 percent level, and almost all of that width comes from the bracket for $\qbar_\alpha$. A tighter bracket would narrow them without new theory.
+\item \emph{Scope.} \Cref{thm:upper} covers laws with bounded support and a finite density at the mode. Laws outside $\cC$, such as the $p$-value mixtures of \cref{sec:practice}, are covered only by \cref{thm:envelope,thm:reduction}. All results assume independent observations from a continuous law.
+\end{itemize}
+
+\paragraph{Open questions.} Is the turning point at the right end of the probability scale always the worst one, that is, $g(u,t)\le g(1,t)$ for every $t$ and every $u$? A proof would replace the computation of \cref{sec:worst}. What is the worst-case size at small $n$, where our intervals are wide, and is it attained by laws built from parts on separated scales, as at $n=4$? And how should the dip be calibrated when observations are dependent, as in time series, where the empirical process has a different limit and the shoulder mechanism may be stronger or weaker?

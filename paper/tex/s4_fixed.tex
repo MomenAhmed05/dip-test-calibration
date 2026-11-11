@@ -1,0 +1,77 @@
+\section{The size of the failure and the corrected cutoff}\label{sec:size}
+
+\Cref{sec:mechanism} gave a lower bound: a shoulder of mass $p$ makes the dip at least $\sqrt p\,M/2$ in the limit. This section shows that no law in the class $\cC$ does worse than a shoulder of full mass, and draws the two consequences: the size of the worst failure, and a cutoff that removes it.
+
+\subsection{An upper bound for a broad class}
+Before stating the bound it is worth seeing why only flat stretches matter. Where the density is strictly increasing, the distribution function curves upward at a fixed rate, so over a short interval of length $\ell$ it departs from its tangent line by an amount of order $\ell^2$. Random fluctuations of size $n^{-1/2}$ are therefore swamped by the curvature of $F$ itself: a convex fit can follow $F$ and absorb the fluctuations at no first-order cost. A flat stretch has no curvature to spare. There $F$ is a straight line, every wiggle of the sample has to be paid for in full, and the fit pays the convex distance of the wiggles to the left of the mode or their concave distance to the right of it. On the modal interval the fit may turn freely, so it pays only the dip. The following theorem turns this into a bound.
+
+\begin{theorem}[upper bound]\label{thm:upper}
+For every law $F$ in $\cC$ and every $c\ge0$,
+\[
+\limsup_{n\to\infty}P_F\bigl(\sqrt nD_n>c\bigr)\ \le\ 1-F_M(2c).
+\]
+\end{theorem}
+
+The proof (\cref{app:proofs}) follows the picture above in two parts. The first part is deterministic. We add a small multiple $r$ of a continuous function $h$ to $F$ and show that the dip of $F+rh$ is at most $r$ times $T_F(h)$, up to smaller terms, where $T_F(h)$ is the largest of the distances just described: the convex distances of $h$ on the flat stretches to the left of the mode, the concave distances on the flat stretches to the right of it, and the dip of $h$ on the modal interval.
+
+To show this we build a unimodal fit to $F+rh$ piece by piece. On each flat stretch we use the best fit of the required shape, and elsewhere we let the fit follow the curvature of $F$. The obstacle is that pieces chosen separately need not join up: the convex pieces on the left and the concave pieces on the right must meet at a single turning point, and a careless join could add an error as large as the one we are trying to bound. The proof avoids this by extending each convex piece beyond its stretch with straight lines that are slightly steeper or flatter than $F$, taking the largest of these extended pieces on the left, and doing the mirror construction with the smallest of the concave pieces on the right. Because the slope of $F$ changes at the ends of each stretch, each extension falls below $F$ outside its own stretch and so adds no error there, and the maximum of convex functions is again convex. How the two sides meet depends on the shape of the mode, and three cases cover $\cC$: a modal interval of positive length, a point mode where the density jumps, and a point mode with no flat stretch ending at it. Beare and Fang \cite{BF17} proved the one-sided version of this bound; what is new here is the join around a turning point that is free to move.
+
+The second part is probabilistic. With $r=n^{-1/2}$ and $h=\sqrt n(F_n-F)$, the deterministic bound says that $\sqrt nD_n$ is asymptotically at most $T_F$ evaluated at a Brownian bridge. Each term of $T_F$ is a distance computed on its own piece of one Brownian path, and each is at most the convex distance of the whole path, which has the law of $M/2$ by \cref{lem:halfgap}.
+
+\subsection{The worst limiting size and the corrected cutoff}
+\Cref{thm:shoulder,thm:upper} meet: shoulders of mass close to one push the dip up to $M/2$, and nothing in $\cC$ pushes it further.
+
+\begin{corollary}\label{cor:lf}
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item For every $F\in\cC$ the test that rejects when $\sqrt nD_n\ge c_\alpha$ has limiting rejection rate at most $\alpha$. For the laws $W(w,\varepsilon)$, which belong to $\cC$, the limiting rate is at least $P(\sqrt{1-w}\,M/2>c_\alpha)$, which tends to $\alpha$ as $w\to0$.
+\item Under the quantile convergence of \cref{sec:setting}, every $F\in\cC$ has limiting rejection rate at most $1-F_M(2\qbar_\alpha)$ under the standard test, and the laws $W(w,\varepsilon)$ have limiting rejection rate at least $1-F_M(2\qbar_\alpha/\sqrt{1-w})$, which tends to $1-F_M(2\qbar_\alpha)$ as $w\to0$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+For (a), take $\eta>0$. The event $\{\sqrt nD_n\ge c_\alpha\}$ is contained in $\{\sqrt nD_n>c_\alpha-\eta\}$, so by \cref{thm:upper} the limiting rate is at most $1-F_M(2c_\alpha-2\eta)$. This tends to $1-F_M(2c_\alpha)=\alpha$ as $\eta\to0$, because $F_M$ is continuous. The lower bound is \cref{thm:shoulder}. Part (b) is the same argument with $c_\alpha$ replaced by $\qbar_\alpha$, using $\sqrt n\,q_n(1-\alpha)\to\qbar_\alpha$ and \cref{cor:shoulder}.
+\end{proof}
+
+\Cref{tab:size} puts numbers on part (b). The worst limiting rejection rate of the nominal 5 percent test is about six times the nominal level, and that of the 1 percent test between 13 and 17 times. The intervals are wide only because the limiting uniform cutoff $\qbar_\alpha$ is known to about two decimals; the enclosure of $F_M$ adds almost nothing.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Limiting quantities at three levels. The corrected constant $c_\alpha$ is rigorously enclosed; the brackets for $\qbar_\alpha$ are Monte Carlo certificates (\cref{sec:numbers}). The last column is the worst limiting rejection rate of the standard test over $\cC$, $1-F_M(2\qbar_\alpha)$, evaluated over the bracket with the rigorous enclosure of $F_M$.}
+\label{tab:size}
+\begin{tabular}{cccc}
+\toprule
+Level $\alpha$ & Corrected constant $c_\alpha$ & Uniform constant $\qbar_\alpha$ & Worst limiting rate \\
+\midrule
+10\% & $[0.667,\,0.6685]$ & $[0.4936,\,0.5108]$ & 40.45 to 46.22\% \\
+5\% & $[0.7305,\,0.7325]$ & $[0.5379,\,0.5558]$ & 28.4 to 33.2\% \\
+1\% & $[0.8585,\,0.861]$ & $[0.6162,\,0.6438]$ & 12.7 to 16.8\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Sharpness of the corrected cutoff}
+\Cref{cor:lf}(a) shows that $c_\alpha/\sqrt n$ is large enough. The next theorem shows that, on the $\sqrt n$ scale, no valid sequence of cutoffs that depends on $n$ alone can have a smaller limit. It does not exclude cutoffs that lie below $c_\alpha/\sqrt n$ at finite $n$ and approach it in the limit; the certified cutoffs for $8\le n\le49$ in \cref{sec:finite} lie below it.
+
+\begin{theorem}[sharpness]\label{thm:sharp}
+Let $a_n\ge0$ be numbers such that the test rejecting when $D_n>a_n$ has limiting rejection rate at most $\alpha$ for every law with a pinned shoulder. Then $\liminf_n\sqrt n\,a_n\ge c_\alpha$.
+\end{theorem}
+\begin{proof}
+Suppose instead that $\sqrt n\,a_n\to a<c_\alpha$ along a subsequence, and pick $a'$ between $a$ and $c_\alpha$. Because $2a'$ lies below the $(1-\alpha)$ quantile of $M$, $P(M/2>a')>\alpha$, and since $P(\sqrt p\,M/2>a')$ increases to $P(M/2>a')$ as $p\to1$, some $p<1$ gives $P(\sqrt p\,M/2>a')>\alpha$. Take $F=W(1-p,\varepsilon)$. Along the subsequence $\sqrt n\,a_n<a'$ eventually, so $P_F(D_n>a_n)\ge P_F(\sqrt nD_n>a')$, and \cref{thm:shoulder} makes the limit inferior of the right side larger than $\alpha$. This contradicts the assumption.
+\end{proof}
+
+\Cref{thm:sharp} covers cutoffs that depend on $n$ only. A cutoff that depends on the data can reject more often than $c_\alpha/\sqrt n$ at laws far from a pinned shoulder; we do not study such cutoffs here.
+
+\subsection{Exact limits for step densities}
+For a unimodal step density the limit of $\sqrt nD_n$ can be written down exactly, and it shows each piece of the density acting separately. Each flat block away from the mode is a pinned shoulder and contributes its own scaled half-gap, the modal block behaves like a small uniform law, and the contributions are independent because disjoint pieces of a Brownian bridge with their chords removed are independent (\cref{lem:pieces}).
+
+\begin{proposition}[step densities]\label{prop:blocks}
+Let $F$ have a unimodal step density on $[0,1]$ with blocks of masses $p_1,\dots,p_k$, different heights on adjacent blocks, and modal block $m$. Then
+\[
+\sqrt nD_n\ \Rightarrow\ \max\Bigl(\max_{i\ne m}\sqrt{p_i}\,M_i/2,\ \sqrt{p_m}\,D(B_m)\Bigr),
+\]
+where $M_1,\dots,M_k$ have the law of $M$, $B_m$ is a standard Brownian bridge, and all terms are independent.
+\end{proposition}
+
+For the running example, the shoulder block gives $\sqrt{0.9}\,M/2$ and the top, which is the modal block, gives $\sqrt{0.1}\,D(B')$; \cref{sec:mechanism} explained why the second term hardly ever matters.
+
+The proof (\cref{app:proofs}) needs the heights of adjacent blocks to differ by a fixed amount. When two heights differ only by order $n^{-1/2}$, the two blocks act as one shoulder and the separate formula fails, which is one reason the worst case over all laws needs the separate treatment of \cref{sec:worst}. Turning the weak limit into an exact limit of rejection probabilities needs the law of $D(B)$ to have no atom at the cutoff, which holds numerically and is not proved; the bounds of this section do not need it.

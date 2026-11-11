@@ -1,0 +1,18 @@
+list(root = 2026110834L, n = 12L, M = 100000L, rng = c("Mersenne-Twister", 
+"Inversion", "Rejection"), A = 10, R = "R version 4.6.2 (2026-10-29 ucrt)", 
+    DELTA_C = 7.57575757575758e-06, modehunt = "1.0.8", dw_0.1 = list(
+        withadd = 0.884180186302989, noadd = 2.61170656031633), 
+    rwa_0.1 = list(a_tilde = 5.52486, a_cert = 5.0226, ladder_step = 1L, 
+        crit = c(2.69646675339403, 2.73197922499783, 1.7253279698987
+        ), union_half1 = 0.09144, union_half2 = 0.09044, cp_upper_half2 = 0.0961045660595384, 
+        certified = TRUE), dw_0.05 = list(withadd = 1.11148658824262, 
+        noadd = 2.79659063916752), rwa_0.05 = list(a_tilde = 2.68127999999999, 
+        a_cert = 2.43752727272726, ladder_step = 1L, crit = c(2.90806714174955, 
+        2.86302774444646, 1.72880969791555), union_half1 = 0.04586, 
+        union_half2 = 0.04412, cp_upper_half2 = 0.0482211860443794, 
+        certified = TRUE), dw_0.01 = list(withadd = 1.5426293679345, 
+        noadd = 3.15734020625804), rwa_0.01 = list(a_tilde = 0.527559999999997, 
+        a_cert = 0.435999999999997, ladder_step = 2L, crit = c(3.31163931444695, 
+        3.13620856897247, 1.73148843333729), union_half1 = 0.00834, 
+        union_half2 = 0.00778, cp_upper_half2 = 0.00961938770300352, 
+        certified = TRUE), seconds = 19.918986082077)

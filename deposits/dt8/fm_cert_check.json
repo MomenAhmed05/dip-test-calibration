@@ -1,0 +1,19 @@
+{
+ "h_coarse": 0.05,
+ "fine": "fm_cert_h0.001.npz",
+ "points": 153,
+ "containment_failures": 0,
+ "falsifier_shift_failures": 139,
+ "falsifier_wrong_kernel_failures": 40,
+ "verdict": "PASS",
+ "coarse_at": {
+  "1.1000": [
+   0.6800189009855209,
+   0.7191795561077537
+  ],
+  "1.4500": [
+   0.9433949371128564,
+   0.9487353421412985
+  ]
+ }
+}

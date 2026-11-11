@@ -1,0 +1,51 @@
+trained 12 runs in 24s
+baseline grid best w=0.1134 eps=0.0108 rej=0.2730 (31s)
+{
+ "best_w": 0.11337912633831489,
+ "best_eps": 0.01075217204653153,
+ "grid_rej": 0.273,
+ "reest": {
+  "200": 0.25749,
+  "1000": 0.24663
+ },
+ "grid_top5": [
+  {
+   "w": 0.11337912633831489,
+   "eps": 0.01075217204653153,
+   "rej": 0.273
+  },
+  {
+   "w": 0.11337912633831489,
+   "eps": 0.00299278260897085,
+   "rej": 0.27025
+  },
+  {
+   "w": 0.09907131637760251,
+   "eps": 0.001,
+   "rej": 0.2695
+  },
+  {
+   "w": 0.11337912633831489,
+   "eps": 0.0062152502427037515,
+   "rej": 0.26825
+  },
+  {
+   "w": 0.08656907180165961,
+   "eps": 0.001,
+   "rej": 0.2665
+  }
+ ]
+}
+unrestricted m=63 uniform  train 0.052->0.232 | fresh n200 0.2310 n1000 0.2165 | {'mode_bin': 63, 'mode_bin_mass': 0.058167657089891224, 'longest_flat_run_bins': 59, 'longest_flat_run_mass': 0.831498440732159, 'max_over_min_density': 4.132497282654512}
+unrestricted m=63 peaked   train 0.002->0.049 | fresh n200 0.0489 n1000 0.0496 | {'mode_bin': 63, 'mode_bin_mass': 0.9968890263755676, 'longest_flat_run_bins': 0, 'longest_flat_run_mass': 0.0, 'max_over_min_density': 4.160745560018917e+24}
+unrestricted m=48 uniform  train 0.045->0.116 | fresh n200 0.1159 n1000 0.1127 | {'mode_bin': 48, 'mode_bin_mass': 0.020398420664019094, 'longest_flat_run_bins': 48, 'longest_flat_run_mass': 0.6743785045090286, 'max_over_min_density': 1.4534547791798156}
+unrestricted m=48 peaked   train 0.000->0.048 | fresh n200 0.0485 n1000 0.0482 | {'mode_bin': 48, 'mode_bin_mass': 0.33295301041628894, 'longest_flat_run_bins': 3, 'longest_flat_run_mass': 0.9979251049573188, 'max_over_min_density': 6.438175429516269e+18}
+unrestricted m=32 uniform  train 0.037->0.049 | fresh n200 0.0492 n1000 0.0492 | {'mode_bin': 32, 'mode_bin_mass': 0.01564124719264757, 'longest_flat_run_bins': 64, 'longest_flat_run_mass': 1.0, 'max_over_min_density': 1.0021314675704338}
+unrestricted m=32 peaked   train 0.000->0.047 | fresh n200 0.0493 n1000 0.0482 | {'mode_bin': 32, 'mode_bin_mass': 0.33272400555559173, 'longest_flat_run_bins': 3, 'longest_flat_run_mass': 0.9972416190403388, 'max_over_min_density': 28829002580458.035}
+curved       m=63 uniform  train 0.000->0.009 | fresh n200 0.0101 n1000 0.0005 | {'mode_bin': 63, 'mode_bin_mass': 0.1271811321739882, 'longest_flat_run_bins': 0, 'longest_flat_run_mass': 0.0, 'max_over_min_density': 7629434323.407069}
+curved       m=63 peaked   train 0.002->0.048 | fresh n200 0.0498 n1000 0.0486 | {'mode_bin': 63, 'mode_bin_mass': 0.9968821049683801, 'longest_flat_run_bins': 0, 'longest_flat_run_mass': 0.0, 'max_over_min_density': 3.284912319160812e+25}
+curved       m=48 uniform  train 0.000->0.001 | fresh n200 0.0009 n1000 0.0000 | {'mode_bin': 48, 'mode_bin_mass': 0.04531826266979304, 'longest_flat_run_bins': 0, 'longest_flat_run_mass': 0.0, 'max_over_min_density': 25617649.724524215}
+curved       m=48 peaked   train 0.000->0.048 | fresh n200 0.0472 n1000 0.0461 | {'mode_bin': 48, 'mode_bin_mass': 0.5115680353802182, 'longest_flat_run_bins': 0, 'longest_flat_run_mass': 0.0, 'max_over_min_density': 8.669240116780803e+20}
+curved       m=32 uniform  train 0.000->0.000 | fresh n200 0.0003 n1000 0.0000 | {'mode_bin': 32, 'mode_bin_mass': 0.03833340695911651, 'longest_flat_run_bins': 0, 'longest_flat_run_mass': 0.0, 'max_over_min_density': 575948.1766159629}
+curved       m=32 peaked   train 0.000->0.047 | fresh n200 0.0482 n1000 0.0464 | {'mode_bin': 32, 'mode_bin_mass': 0.5116832739914982, 'longest_flat_run_bins': 0, 'longest_flat_run_mass': 0.0, 'max_over_min_density': 7226760233892911.0}
+done in 54s

@@ -1,0 +1,48 @@
+{
+ "root": 2026110713,
+ "d": 0.00020833333333333335,
+ "rows": [
+  {
+   "n": 50,
+   "N": 400,
+   "alpha": 0.05,
+   "b": 6,
+   "failed_blocks": 0,
+   "certified_cutoff": null,
+   "trail": [
+    {
+     "c": 0.75,
+     "K": [
+      4,
+      9,
+      9,
+      9
+     ],
+     "pass": false
+    }
+   ],
+   "edge_block_rate_at_cert": null
+  },
+  {
+   "n": 50,
+   "N": 400,
+   "alpha": 0.01,
+   "b": -1,
+   "failed_blocks": 0,
+   "certified_cutoff": null,
+   "trail": [
+    {
+     "c": 0.9,
+     "K": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "pass": false
+    }
+   ],
+   "edge_block_rate_at_cert": null
+  }
+ ]
+}

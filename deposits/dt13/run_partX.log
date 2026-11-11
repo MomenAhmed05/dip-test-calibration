@@ -1,0 +1,24 @@
+W(0.1,0.005)           alpha=0.01: P(reject) in [0.0129081605, 0.0129081605]
+W(0.1,0.005)           alpha=0.05: P(reject) in [0.0554657260, 0.0554657260]
+W(0.1,0.005)           alpha=0.10: P(reject) in [0.1066395418, 0.1066395418]
+W(0.4,0.005)           alpha=0.01: P(reject) in [0.0302264108, 0.0302264108]
+W(0.4,0.005)           alpha=0.05: P(reject) in [0.0840521945, 0.0840521945]
+W(0.4,0.005)           alpha=0.10: P(reject) in [0.1363820479, 0.1363820479]
+uniform as W(1/2,1/2) (polytope check) alpha=0.01: P(reject) in [0.0100000000, 0.0100000000]
+uniform as W(1/2,1/2) (polytope check) alpha=0.05: P(reject) in [0.0500000000, 0.0500000000]
+uniform as W(1/2,1/2) (polytope check) alpha=0.10: P(reject) in [0.1000000000, 0.1000000000]
+uniform check alpha=0.01: identity + contains alpha = True, width 1.09e-33
+uniform check alpha=0.05: identity + contains alpha = True, width 1.22e-32
+uniform check alpha=0.1: identity + contains alpha = True, width 3.46e-32
+MC check: {'law': 'W(0.1,0.005)', 'alpha': 0.01, 'exact': [0.012908160470161172, 0.012908160470161172], 'mc': 0.0129775, 'z': 0.388507967377741}
+MC check: {'law': 'W(0.1,0.005)', 'alpha': 0.05, 'exact': [0.055465725952099976, 0.055465725952099976], 'mc': 0.0553325, 'z': -0.36812695342587437}
+MC check: {'law': 'W(0.1,0.005)', 'alpha': 0.1, 'exact': [0.10663954184351976, 0.10663954184351976], 'mc': 0.1070575, 'z': 0.8564269050441657}
+MC check: {'law': 'W(0.4,0.005)', 'alpha': 0.01, 'exact': [0.030226410823832435, 0.030226410823832435], 'mc': 0.0295625, 'z': -2.4525127743540795}
+MC check: {'law': 'W(0.4,0.005)', 'alpha': 0.05, 'exact': [0.0840521945186684, 0.0840521945186684], 'mc': 0.083165, 'z': -2.022269137173249}
+MC check: {'law': 'W(0.4,0.005)', 'alpha': 0.1, 'exact': [0.1363820478620978, 0.1363820478620978], 'mc': 0.1364325, 'z': 0.09297584527496404}
+MC check: {'law': 'atom p=0.9', 'alpha': 0.1, 'exact': 0.10692, 'mc': 0.10633, 'z': -1.2075561953601268}
+MC check: {'law': 'atom p=0.62', 'alpha': 0.1, 'exact': 0.134263232, 'mc': 0.1337075, 'z': -1.0309175207962504}
+MC check: {'law': 'atom p=0.62', 'alpha': 0.05, 'exact': 0.08248735610692345, 'mc': 0.08229, 'z': -0.45371260449392725}
+alpha=0.01: best two-step on scan eps=1e-06 w=0.45: 0.031244; best atom p=0.55: 0.030834
+alpha=0.05: best two-step on scan eps=1e-06 w=0.45: 0.084488; best atom p=0.6: 0.082895
+alpha=0.1: best two-step on scan eps=1e-06 w=0.4: 0.136480; best atom p=0.65: 0.133933

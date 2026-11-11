@@ -1,0 +1,3 @@
+n=800 shard=8 chunk=0 116.0s lps=2801 fb=1 rep=1.1e-07
+n=800 shard=8 chunk=1 131.4s lps=3087 fb=1 rep=9.8e-08
+n=800 shard=8 chunk=2 105.0s lps=2517 fb=0 rep=2.3e-08

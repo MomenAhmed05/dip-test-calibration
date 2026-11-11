@@ -1,0 +1,272 @@
+{
+ "clean": {
+  "fixtures": true,
+  "quantile": true,
+  "exact_n4": true,
+  "anchor": true,
+  "gate": true,
+  "law": true,
+  "roots": true,
+  "direction": true,
+  "strict": true,
+  "provenance": true
+ },
+ "seeded": {
+  "E1 allow_zero=True (diptest default)": {
+   "validators": {
+    "fixtures": false,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": true,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "fixtures"
+   ]
+  },
+  "E2 dip returned x2 (excess-mass convention)": {
+   "validators": {
+    "fixtures": false,
+    "quantile": true,
+    "exact_n4": false,
+    "anchor": false,
+    "gate": true,
+    "law": true,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "fixtures",
+    "exact_n4",
+    "anchor"
+   ]
+  },
+  "E3 critical value from the wrong n (n=50 reference used at n=30)": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": false,
+    "gate": true,
+    "law": true,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "anchor"
+   ]
+  },
+  "E4 n=4 cutoff from the wrong level (alpha/2)": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": false,
+    "anchor": true,
+    "gate": true,
+    "law": true,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "exact_n4"
+   ]
+  },
+  "E5 rejection D > c instead of D >= c": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": true,
+    "roots": true,
+    "direction": true,
+    "strict": false,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "strict"
+   ]
+  },
+  "E6 bimodal law slipped into the null family (U-shaped two-step)": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": false,
+    "law": true,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "gate"
+   ]
+  },
+  "E7 in-search (DEV) maximum reported as a size lower bound": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": true,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": false
+   },
+   "caught": true,
+   "caught_by": [
+    "provenance"
+   ]
+  },
+  "E8 DEV root reused for confirmation": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": true,
+    "roots": false,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "roots"
+   ]
+  },
+  "E9 flipped enclosure (lower from X_(l) counts, upper from X_(u))": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": true,
+    "roots": true,
+    "direction": false,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "direction"
+   ]
+  },
+  "E10 off-by-one quantile index": {
+   "validators": {
+    "fixtures": true,
+    "quantile": false,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": true,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "quantile"
+   ]
+  },
+  "E11 witness top mass 0.01 instead of 0.1": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": false,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "law"
+   ]
+  },
+  "E12 same root for reference and draws": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": true,
+    "roots": false,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "roots"
+   ]
+  },
+  "E13 ramp generator where W(0.1) is expected": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": false,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "law"
+   ]
+  },
+  "E14 uniform generator used as the witness": {
+   "validators": {
+    "fixtures": true,
+    "quantile": true,
+    "exact_n4": true,
+    "anchor": true,
+    "gate": true,
+    "law": false,
+    "roots": true,
+    "direction": true,
+    "strict": true,
+    "provenance": true
+   },
+   "caught": true,
+   "caught_by": [
+    "law"
+   ]
+  }
+ },
+ "catch_rate": "14/14",
+ "clean_all_pass": true
+}

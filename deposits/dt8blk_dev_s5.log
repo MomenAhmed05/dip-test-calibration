@@ -1,0 +1,16 @@
+n=50 shard=5 reps=1818 33.2s maxviol=4.1e-15
+n=100 shard=5 reps=1818 49.9s maxviol=2.3e-15
+Traceback (most recent call last):
+  File "code\dt8_block_dev.py", line 51, in <module>
+    main()
+  File "code\dt8_block_dev.py", line 37, in main
+    v, e = block_stat_bb(x, lo_u, hi_u, FLOOR / rt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "code\sup_pinned.py", line 116, in block_stat_bb
+    ub = piece_dist(x, P[i][0], P[j][1])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "code\sup_pinned.py", line 78, in piece_dist
+    raise RuntimeError(f"LP failed: {res.message}")
+RuntimeError: LP failed: The HiGHS status code was not recognized. (HiGHS Status 15: model_status is Unknown; primal_status is Infeasible)
+n=400 shard=5 reps=727 108.2s maxviol=2.2e-15
+n=800 shard=5 reps=364 149.3s maxviol=1.7e-15 fallbacks=0
