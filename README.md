@@ -1,9 +1,9 @@
-# Flat shoulders break the uniform calibration of the dip test
+# Flat shoulders and a corrected cutoff for the dip test
 
 Code, deposited outputs, Lean files and paper for
 
-> M. Ahmed. *Flat shoulders break the uniform calibration of the dip test, and a
-> constant cutoff repairs it.* 2026. The paper is [`paper/main.pdf`](paper/main.pdf).
+> M. Ahmed. *Flat shoulders and a corrected cutoff for the dip test: where the
+> uniform is not the worst case.* 2026. The paper is [`paper/main.pdf`](paper/main.pdf).
 
 The dip test of Hartigan and Hartigan (1985) takes its critical values from the
 uniform distribution, on the grounds that among unimodal laws the uniform gives
