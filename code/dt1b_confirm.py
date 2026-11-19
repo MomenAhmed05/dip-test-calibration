@@ -1,4 +1,4 @@
-"""Step 3b (DT1-b) confirmation. CONFIRM tier. Frozen design: work/DT1b-PREREG.md (receipt RC-005).
+"""Step 3b (DT1-b) confirmation. CONFIRM tier. Frozen design: protocols/DT1b-PREREG.md.
 
 Roots (CV-6): 2026110601 uniform reference (0, n, chunk); 2026110602 confirmation draws (1, f, n, chunk);
 2026110603 LP-audit selection (2, f, n).

@@ -1,4 +1,4 @@
-"""Step 7 (DT5) size and power study for dip calibrations (simulator). Design: work/DT5-PREREG.md.
+"""Step 7 (DT5) size and power study for dip calibrations (simulator). Design: protocols/DT5-PREREG.md.
 
 One statistic (the dip D_n, diptest, allow_zero=False) at several critical values, on the SAME datasets:
   uniform  : own-n uniform reference quantile (the procedure being repaired; not level-valid; never ranked)

@@ -1,4 +1,4 @@
-"""Step 5 CONFIRM (DT3c): block formula at large n + pinning-overshoot check. Frozen design: work/DT3c-PREREG.md.
+"""Step 5 CONFIRM (DT3c): block formula at large n + pinning-overshoot check. Frozen design: protocols/DT3c-PREREG.md.
 
 Roots: 2026110630 reference spawn (0, chunk); 2026110631 laws spawn (1, law_index, chunk).
 Nested common random numbers: one stream of NMAX uniforms per replicate; each n uses the prefix u[:n].

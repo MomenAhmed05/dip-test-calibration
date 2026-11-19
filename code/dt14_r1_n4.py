@@ -1,5 +1,5 @@
 """Step 15 / DT14 WP-D at n = 4 (R1): certify that the dip cutoffs d_a = 0.2335 / 0.2420 / 0.2488 (a = 10 / 5 / 1%)
-give size <= a at n = 4 uniformly over continuous unimodal laws. Prereg: DT14-R1N4-PREREG.md (frozen at G-029).
+give size <= a at n = 4 uniformly over continuous unimodal laws. Prereg: protocols/DT14-R1N4-PREREG.md.
 
 Chain (all inputs named):
   P_F(D_4 >= d) = P_F(T >= T_d), T_d = 4d/(1-4d)            [H&H 1985 reduction D_4 = T/(4(T+1)), cited]

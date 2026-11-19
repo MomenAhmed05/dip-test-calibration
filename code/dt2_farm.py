@@ -1,4 +1,4 @@
-"""Step 4 (DT2) conjecture farm, part 1: the block formula (BF). DEV tier. Frozen design: work/DT2-PREREG.md.
+"""Step 4 (DT2) conjecture farm, part 1: the block formula (BF). DEV tier. Frozen design: protocols/DT2-PREREG.md.
 
 Root 2026110610: reference spawn (0, n, chunk); laws spawn (1, f, n, chunk).
 Run: python code/dt2_farm.py [--quick]

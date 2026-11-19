@@ -1,4 +1,4 @@
-"""O5-ML secondary (GOAL v1.2): how often does the gap statistic (Tibshirani, Walther & Hastie 2001) choose k > 1 on
+"""O5-ML secondary: how often does the gap statistic (Tibshirani, Walther & Hastie 2001) choose k > 1 on
 one-mode pile-up laws vs log-concave controls? 1-D data, ClustPy GapStatistic (k-means, uniform reference box,
 'original' 1-SE stopping rule), B = 100 reference sets, k in 1..6. Not a dip method: outside the calibration comparison.
 Run (venv): python code/o5_gap.py [--quick] [--shard i/k]

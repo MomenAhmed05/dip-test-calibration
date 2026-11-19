@@ -24,6 +24,7 @@ in the limit. The paper also gives certified cutoffs for small and moderate samp
 | [`deposits/`](deposits/) | the outputs of those scripts, as JSON, CSV and text files |
 | [`lean/`](lean/) | the Lean 4 files that check the deterministic steps of several proofs |
 | [`paper/`](paper/) | the paper (PDF and LaTeX source) and the script that draws its figures |
+| [`protocols/`](protocols/) | the protocols of the runs, each frozen before its run (cleaned copies; see its README) |
 
 Every number in the paper is read from a deposit. The figures are drawn by
 [`paper/figs/make_figs.py`](paper/figs/make_figs.py), which reads deposits only and
@@ -63,8 +64,9 @@ roots are written inside each script and each deposit.
 - **Third-party texts.** `fm_table.py --build` parses the table of Balabdaoui and
   Pitman (2011) from a local copy of their paper, which is not redistributed. Its
   output, `deposits/dt4/bf_table_full.json`, is included.
-- **Design notes.** Some docstrings refer to design notes (files such as
-  `DT5-PREREG.md`). These are working records and are not part of this repository.
+- **Design notes.** The protocols (`DT*-PREREG.md`) are in [`protocols/`](protocols/).
+  Some docstrings and protocols also refer to other working notes, such as
+  `CONVENTIONS.md` or `DT7-UNIF.md`. These are not part of this repository.
 
 ## Reproducing
 

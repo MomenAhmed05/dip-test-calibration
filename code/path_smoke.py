@@ -1,4 +1,4 @@
-"""Step 2 path-functional normalisation smoke (PLAN Step 2 item 3, G-003). DEV tier.
+"""Step 2 path-functional normalisation smoke. DEV tier.
 
 V(f) := d_sup(f, convex functions) on an interval. Identity checked: V(f) = (1/2) max(f - GCM(f)).
 (A) identity on random grid functions: LP value vs (1/2)·hull gap.

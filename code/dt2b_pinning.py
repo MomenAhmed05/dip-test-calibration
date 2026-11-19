@@ -1,4 +1,4 @@
-"""Step 4 farm part 2: the pinning curve g(kappa, lambda) and the shrinking jump. DEV. Design: work/DT2b-PREREG.md.
+"""Step 4 farm part 2: the pinning curve g(kappa, lambda) and the shrinking jump. DEV. Design: protocols/DT2b-PREREG.md.
 
 Root 2026110611. Run: python code/dt2b_pinning.py [--quick]
 """

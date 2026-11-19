@@ -1,6 +1,6 @@
 """Step 4b (DT2-ML): learned adversary for the uniform-calibrated dip test. DEV search + fresh re-estimates.
 
-Frozen design: work/DT2ML-PREREG.md. Generator: unimodal 64-bin step density with learned monotone log-heights
+Frozen design: protocols/DT2ML-PREREG.md. Generator: unimodal 64-bin step density with learned monotone log-heights
 (mode bin fixed per run). Signal: score-function (REINFORCE) gradient of a smoothed rejection indicator.
 Roots: 2026110620 training, 2026110621 re-estimation, 2026110622 baseline.
 Run: python code/ml_adversary.py [--quick]

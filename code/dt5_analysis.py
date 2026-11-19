@@ -1,4 +1,4 @@
-"""Step 7 (DT5) analysis: intervals and the frozen decision rules R1-R5 of work/DT5-PREREG.md.
+"""Step 7 (DT5) analysis: intervals and the frozen decision rules R1-R5 of protocols/DT5-PREREG.md.
 
 Reads deposits/dt5[_quick]/power.json and the per-job parts written by dt5_power.py. Writes analysis.json and
 DT5-TABLES.md next to them. No random numbers.

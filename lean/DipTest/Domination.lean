@@ -169,7 +169,7 @@ theorem const_vs_linear_error (c ga gb t : ℝ) (ht0 : 0 ≤ t) (ht1 : t ≤ 1) 
           (mul_le_mul_of_nonneg_left (le_max_right _ _) ht0)
     _ = max |c - ga| |c - gb| := by ring
 
-/-- Size chain (GOAL Tier 3, gap G3): if the worst-case asymptotic size is 1 - F(2 q) (DT3 Thm 1'/Thm 4,
+/-- Size chain: if the worst-case asymptotic size is 1 - F(2 q) (DT3 Thm 1'/Thm 4,
 with F = F_M nondecreasing), q <= q_up (certified, DT8 Part A) and F(2 q_up) <= f_up (certified Arb
 enclosure), then the size is at least 1 - f_up. -/
 theorem size_chain (F : ℝ → ℝ) (hF : Monotone F) (q qup fup : ℝ) (hq : q ≤ qup)

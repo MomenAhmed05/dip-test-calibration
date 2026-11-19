@@ -1,5 +1,5 @@
 """Step 14 (DT13) CONFIRM driver, Parts W (fixed witnesses, every n) and L (per-n selected laws, grid n).
-Frozen design: work/DT13-PREREG.md. Conventions: CONVENTIONS.md CV-1..CV-11 (CV-4 amendment v1.1).
+Frozen design: protocols/DT13-PREREG.md. Conventions: CONVENTIONS.md CV-1..CV-11 (CV-4 amendment v1.1).
 
 Phase 1 (ref): for every n in NS_ALL, R_REF dips of iid U(0,1), root ROOT_REF, spawn (0, n), one stream per n in
   batch order. Per n and alpha: q_hat = X_(ceil((1-a)R)), bracket X_(l) <= q <= X_(u) with binomial tails <= GT

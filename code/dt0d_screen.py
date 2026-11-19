@@ -1,4 +1,4 @@
-"""Step 2c (DT0-d) follow-up screen. DEV tier only. Frozen design: work/DT0d-PREREG.md.
+"""Step 2c (DT0-d) follow-up screen. DEV tier only. Frozen design: protocols/DT0d-PREREG.md.
 
 (i) local slope scaling beta_n = c / sqrt(n) on the witness W(0.1, 0.005);
 (ii) fixed Gaussian noise on W up to n = 12800;

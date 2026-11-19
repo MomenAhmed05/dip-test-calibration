@@ -1,4 +1,4 @@
-"""Step 2b (DT0-c) early breadth screen. DEV tier only. Frozen design: work/DT0c-PREREG.md.
+"""Step 2b (DT0-c) early breadth screen. DEV tier only. Frozen design: protocols/DT0c-PREREG.md.
 
 Statistic D_alg (CONVENTIONS CV-1), our own uniform reference H_n (CV-3), rejection
 iff D >= c (CV-4), seeds per CV-6: root 2026110540, reference spawn (0, n), anchors and

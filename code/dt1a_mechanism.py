@@ -1,4 +1,4 @@
-"""Step 3a (DT1-a) mechanism + convention audit. DEV-mechanism tier. Frozen design: work/DT1a-PREREG.md.
+"""Step 3a (DT1-a) mechanism + convention audit. DEV-mechanism tier. Frozen design: protocols/DT1a-PREREG.md.
 
 Root 2026110560; each (f, n) cell is drawn in 10 chunks with spawn key (f, n, chunk).
 Run: python code/dt1a_mechanism.py

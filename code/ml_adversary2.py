@@ -1,6 +1,6 @@
 """Step 4b part 2: longer, finer adversary training (K = 256, 3000 steps, annealed tau). DEV + fresh re-estimates.
 
-Frozen design: work/DT2ML2-PREREG.md. Roots: 2026110623 training, 2026110624 re-estimation.
+Frozen design: protocols/DT2ML2-PREREG.md. Roots: 2026110623 training, 2026110624 re-estimation.
 Run: python code/ml_adversary2.py [--quick]
 """
 
