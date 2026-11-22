@@ -40,9 +40,9 @@ estimates nothing itself.
 | edge statement at `t'` (Theorem 7, Section 5.4, Appendix B) | `dt16/` | `dt16_neprime_arb.py`, `dt16_hgeom_cert.py`, `dt16_pair_cert.py`, `dt16_pair_cert_summary.py`, `dt16_rebuild.py` |
 | edge statement at `c_alpha` (Section 5.4) | `dt10/`, `dt11/` | `dt10_*.py`, `dt11_scalar_check.py` |
 | size map for `4 <= n <= 1000` (Section 6.1, Figure 5) | `dt13/` | `dt13_confirm.py`, `dt13_analysis.py` |
-| `n = 4` (Section 6.3) | `dt13/`, `dt14/` | `dt13_n4_*.py`, `dt14_n4_*.py`, `dt14_he2.py` |
+| `n = 4` (Section 6.3, Table 3) | `dt13/`, `dt14/` | `dt13_n4_*.py`, `dt14_n4_*.py`, `dt14_he2.py` |
 | certified cutoffs for small and moderate `n` (Section 6.2, Table 2, Figure 6) | `dt14/`, `dt9/`, `dt8blk/` | `dt14_r1_n4.py`, `dt14_r1_small.py`, `dt14_r1_small_analysis.py`, `dt9_*.py`, `dt8_block_*.py` |
-| size and power study (Section 7.1, Figure 7) | `dt5/` | `dt5_power.py`, `dt5_analysis.py`, `dt5_r5.py` |
+| size and power study (Section 7.1, Table 4, Figure 7) | `dt5/` | `dt5_power.py`, `dt5_analysis.py`, `dt5_r5.py` |
 | comparison with the multiscale tests of Dümbgen and Walther and Rufibach and Walther (Section 7.1) | `dt14/mh_power*` | `code/r/mh_*.R` |
 | p-value mixtures and curved pile-ups (Section 7.2) | `dt0c/`, `dt0d/` | `dt0c_screen.py`, `dt0d_screen.py` |
 | UniDip, SkinnyDip and DipMeans (Section 7.2) | `o5ml/`, `o5gap/` | `o5_ml.py`, `o5_gap.py`, `o5_analysis.py`, `o5_hx.py` |

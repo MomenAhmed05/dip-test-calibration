@@ -107,7 +107,7 @@ Fix $\delta\in(0,L)$ and write $J=[0,L-\delta]$.
 Let $H$ be the distribution function of $D(B)$ and let $q^+=\inf\{x:H(x)>1-\alpha\}$ be its upper $(1-\alpha)$ quantile.
 \begin{steps}
 \item \emph{The cutoff is positive.} A uniform limit of functions that are convex and then concave is again convex and then concave, so it is differentiable almost everywhere. A Brownian bridge is almost surely nowhere differentiable, so $D(B)>0$ almost surely. Hence $H(0)=0$ and $q^+>0$.
-\item \emph{Rejection above any level beyond $q^+$.} Take a continuity point $x>q^+$ of $H$. Then $H(x)>1-\alpha$, and since $P_U(\sqrt nD_n\le x)\to H(x)$ under the uniform law, eventually $\sqrt n\,q_n(\alpha)\le x$. From then on $\{\sqrt nD_n>x\}\subseteq\{D_n>q_n(\alpha)\}$.
+\item \emph{Rejection above any level beyond $q^+$.} Take a continuity point $x>q^+$ of $H$. Then $H(x)>1-\alpha$, and since $P_U(\sqrt nD_n\le x)\to H(x)$ under the uniform law, eventually $\sqrt n\,q_n(1-\alpha)\le x$. From then on $\{\sqrt nD_n>x\}\subseteq\{D_n>q_n(1-\alpha)\}$.
 \item \emph{Reduce to one bridge.} By \cref{thm:shoulder} with $p=1-w$, the limiting rejection rate under $W(w,\varepsilon)$ is at least $P(\sqrt{1-w}\,V(B)>x)$. Letting $x$ decrease to $q^+$ through continuity points, and then letting $w$ decrease to $0$, shows that it is enough to prove
 \[
 P\bigl(V(B)>q^+\bigr)>\alpha .
@@ -162,9 +162,24 @@ After an approximation that changes both sides by at most $\epsilon$, we may tak
 \item \emph{One-sided limit.} If $F$ is convex on an interval $I$, then $V_I(F+rh)/r$ converges to the largest convex distance of $h$ over the maximal flat stretches inside $I$. No curvature condition is needed, and the stretches may accumulate. This is a form of the directional derivative of Beare and Fang \cite{BF17}; the concave case is the mirror image.
 \end{enumerate}
 
-\paragraph{Case A: a modal interval ($m_1<m_2$).} Let $f$ be the monotone one-sided density, $f^*$ its value on $P$, $\ell_P$ the linear function equal to $F$ on $P$, and $T_L$, $T_R$ the left and right parts of $T_F(h)$. 
+\paragraph{Case A: a modal interval ($m_1<m_2$).} The plan is to use the best turning fit on the flat top $P$, the best convex fit on everything to its left, and the mirror image on the right. The only work is to make the left fit hand over to the top fit before the turning point.
 
-The plan is to use the best turning fit on the flat top $P$, the best convex fit on everything to its left, and the mirror on the right, and to make sure that the left fit hands over to the top fit before the turning point is reached. Four constants control this. The width $\eta$ keeps the turning point of the top fit at least $\eta$ inside $P$, so that there is room to hand over. The factor $\lambda<1$ squeezes the top fit slightly, which makes its end slopes finite. The constant $M'$ decides how far the density must fall below its peak value $f^*$ before we stop using the top fit; it defines a window around $P$ that shrinks to $P$ as $r\to0$. The condition that $(M'-2K)\eta$ is large guarantees that, at the turning point, the extended left fit lies well below the top fit, so taking the larger of the two selects the top fit there. The order of choices matters: first $\epsilon$ and $h$ (which fix the Lipschitz constant $K$), then $\eta$ with $2\eta<m_2-m_1$, then the top fit, then $M'$, and only then $r\to0$.
+\smallskip\noindent\emph{Notation.}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item $f$ is the monotone one-sided density, and $f^*$ its value on $P$;
+\item $\ell_P$ is the linear function equal to $F$ on $P$;
+\item $T_L$ and $T_R$ are the left and right parts of $T_F(h)$.
+\end{itemize}
+
+\smallskip\noindent\emph{Four constants control the hand-over.}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item $\eta$ keeps the turning point of the top fit at least $\eta$ inside $P$, which leaves room to hand over;
+\item $\lambda<1$ squeezes the top fit slightly, which makes its end slopes finite;
+\item $M'$ sets how far the density must fall below $f^*$ before we stop using the top fit, which gives a window around $P$ that shrinks to $P$ as $r\to0$;
+\item a large $(M'-2K)\eta$ puts the extended left fit well below the top fit at the turning point, so the larger of the two is the top fit there.
+\end{itemize}
+They are chosen in this order: first $\epsilon$ and $h$ (which fix the Lipschitz constant $K$), then $\eta$ with $2\eta<m_2-m_1$, then the top fit, then $M'$, and only then $r\to0$.
+\medskip
 \begin{steps}
 \item \emph{Modal fit.} Take a convex-then-concave fit $\varphi$ of $h$ on $P$ with error at most $D_P(h)+\epsilon$. Squeezing it towards the centre $c$ of $P$, $x\mapsto\varphi(c+\lambda(x-c))$ with $\lambda<1$, costs at most $K(1-\lambda)|P|$ and makes its end slopes bounded, say by $\bar\sigma$. Replacing it by its chord near each end of $P$ costs at most $2K\eta$ and puts its turning point $\tau$ in $[m_1+\eta,m_2-\eta]$. Call the resulting error $E$.
 \item \emph{Isolate the region where the modal fit is needed.} Fix $M'>\bar\sigma+2K$ so large that $(M'-2K)\eta>T_L+T_R+E+2$, and let $[a_r,b_r]=\{f\ge f^*-rM'\}$. Since $f<f^*$ off $P$, the window shrinks to $P$. On it use $w=\ell_P+r\varphi$, with $\varphi$ extended linearly beyond $P$. Its error there is at most $rE+o(r)$, and left of $a_r$ it lies below $F_r$ plus $rE+o(r)$, because the density of $F$ there is below $f^*-rM'$.

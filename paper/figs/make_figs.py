@@ -16,6 +16,7 @@ import numpy as np
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch  # noqa: E402
+from matplotlib.text import Text  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DEP = os.path.join(ROOT, "deposits")
@@ -72,6 +73,9 @@ def F_M(x):
 
 
 def save(fig, name):
+    # print legibility: every text in the figure at least 9 pt, and 12 percent larger than drawn
+    for txt in fig.findobj(Text):
+        txt.set_fontsize(max(9.0, 1.12 * txt.get_fontsize()))
     fig.savefig(os.path.join(OUT, name + ".pdf"), bbox_inches="tight")
     fig.savefig(os.path.join(OUT, name + ".png"), bbox_inches="tight")
     plt.close(fig)
@@ -298,7 +302,7 @@ def fig6():
 # ---------------------------------------------------------------- Figure 7
 def fig7():
     """Geometry of Section 5: probability scale, seam split, and the two ranges of turning points."""
-    fig, (a, b, c) = plt.subplots(1, 3, figsize=(7.0, 2.7), gridspec_kw={"width_ratios": [1, 1.15, 1.1]})
+    fig, (a, b, c) = plt.subplots(1, 3, figsize=(7.4, 2.9), gridspec_kw={"width_ratios": [1, 1.15, 1.1]})
     # (a) a unimodal CDF: convex before the mode, concave after; u = F(m)
     x = np.linspace(0, 1, 801)
     dens = x * (1 - x) ** 3
@@ -311,7 +315,7 @@ def fig7():
     a.plot(x, cdf, color="k", lw=1.3)
     a.plot([m, m], [0, um], color=C_GREY, lw=0.8, ls="--")
     a.plot([0, m], [um, um], color=C_GREY, lw=0.8, ls="--")
-    a.text(0.03, um + 0.05, "$u=F(m)$", fontsize=8.5)
+    a.text(0.01, um + 0.03, "$u=F(m)$", fontsize=8)
     a.text(m + 0.02, 0.04, "mode $m$", fontsize=8.5)
     a.text(0.07, 0.62, "convex\nbefore $m$", fontsize=8, color=C_LF)
     a.text(0.55, 0.45, "concave\nafter $m$", fontsize=8, color=C_UNIF)
@@ -319,7 +323,7 @@ def fig7():
     a.set_ylim(0, 1.05)
     a.set_xlabel("$x$")
     a.set_ylabel("$F(x)$")
-    a.set_title("(a) The mode on the probability scale", loc="left", fontsize=9)
+    a.set_title("(a) The mode", loc="left", fontsize=9)
 
     # (b) one bridge cut at u: removing the broken line leaves two independent bridges
     rng = np.random.default_rng(20261111)
@@ -344,7 +348,7 @@ def fig7():
     b.set_yticks([])
     b.spines["left"].set_visible(False)
     b.set_xlabel("probability scale; cut at $u=0.7$")
-    b.set_title("(b) A bridge split at the turning point", loc="left", fontsize=9)
+    b.set_title("(b) Split at the turning point", loc="left", fontsize=9)
 
     # (c) the two ranges of turning points at the 5 percent level, on the scale eps = sqrt(1 - u)
     near_hi, mid_lo, eps_max = 0.169, 0.130, 1 / np.sqrt(2)
@@ -363,7 +367,7 @@ def fig7():
     c.set_xlabel("distance from the edge, $\\varepsilon=\\sqrt{1-u}$", labelpad=9)
     c.set_xticks([0, 0.2, 0.4, eps_max])
     c.set_xticklabels(["0", "0.2", "0.4", "$1/\\sqrt{2}$"])
-    c.set_title("(c) Turning points covered (5% level)", loc="left", fontsize=9)
+    c.set_title("(c) Turning points covered (5%)", loc="left", fontsize=9)
     fig.tight_layout(w_pad=1.0)
     save(fig, "fig7_dependency")
 

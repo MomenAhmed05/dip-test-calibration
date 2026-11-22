@@ -11,6 +11,9 @@
 \usepackage[capitalise,noabbrev]{cleveref}
 \usepackage{xcolor}
 \usepackage{microtype}
+\usepackage{caption}
+\DeclareCaptionFont{capgrey}{\color{black!72}}
+\captionsetup{font={footnotesize,it,capgrey},labelsep=period,justification=centering,margin=1cm,skip=6pt}
 
 \setlist{itemsep=2pt,topsep=4pt}
 \newenvironment{steps}{\begin{enumerate}[label=\textbf{Step \arabic*.},leftmargin=0pt,itemindent=0pt,labelwidth=!,labelsep=0.5em,align=left,itemsep=7pt,topsep=6pt]}{\end{enumerate}}

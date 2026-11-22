@@ -43,21 +43,24 @@ g(1-\varepsilon^2,t)\ \le\ g(1,t)-\varepsilon^2f_M(2t)\Bigl(t-\frac1{4t}\Bigr)+o
 We state this expansion without proof, because the rest of the paper does not use it. It does not settle the question, for two reasons. It says nothing about turning points far from the edge. And the cutoffs of the standard test lie close to $\frac12$ (between about $0.49$ and $0.64$), where the margin $t-1/(4t)$ is small or even negative.
 
 \subsection{Certifying the edge at the standard cutoffs}
-The standard test uses the cutoff $\qbar_\alpha$, which we know only within its certified bracket. We therefore work at a value $t'$ just below the lower end of that bracket. Because $t'<\qbar_\alpha$, every rejection by the standard test eventually has $\sqrt nD_n>t'$, so an upper bound at $t'$ is an upper bound for the standard test. At the 5 percent level, for example, $t'=0.5378$ and the edge value $g(1,t')=1-F_M(2t')$ is $33.2$ percent, the upper end of the interval in \cref{tab:size}. The task is to show that no other turning point exceeds the edge at $t'$.
+The standard test uses the cutoff $\qbar_\alpha$, which we know only within its certified bracket. We therefore work at a value $t'$ just below the lower end of that bracket, for example $t'=0.5378$ at the 5 percent level. Every rejection by the standard test eventually has $\sqrt nD_n>t'$, so a bound at $t'$ also bounds the standard test. At $t'$ the edge gives $g(1,t')=1-F_M(2t')$, which is 33.2 percent at the 5 percent level, the upper end of the interval in \cref{tab:size}. We must show that no other turning point does worse. \Cref{fig:dependency}(c) shows how the turning points are covered.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figs/fig7_dependency.pdf}
-\caption{The geometry behind \cref{sec:worst}. Every law reduces to a uniform sample with a fixed turning point, the bridge splits there into two independent halves, and two arguments together cover every turning point. (a) A unimodal distribution function curves upward before the mode $m$ and downward after it. On the probability scale the mode sits at $u=F(m)$. (b) One simulated Brownian bridge cut at $u=0.7$. After the dashed broken line is removed, the left piece is $\sqrt u\,b_1$ and the right piece is $\sqrt{1-u}\,r_2$, two independent bridges (\cref{lem:seam}). The fit must be convex on the left and concave on the right. (c) At the 5 percent level, a written bound covers the turning points near the edge and a paired simulation covers those in the middle. The two ranges overlap, the edge itself gives the law of $M/2$, and reflection covers $u<\frac12$.}
+\caption{(a) On the probability scale the mode sits at $u=F(m)$. (b) Cutting a bridge at $u$ and removing the dashed line leaves two independent bridges (\cref{lem:seam}). (c) How the turning points are covered at the 5 percent level.}
 \label{fig:dependency}
 \end{figure}
 
-We split the turning points into two overlapping ranges, as \cref{fig:dependency}(c) shows. Close to the edge, the two pieces of the bridge in \cref{lem:seam} are very unequal: the right piece is short, of scale $\varepsilon=\sqrt{1-u}$. There a written argument bounds $g(u,t')-g(1,t')$ from above by an explicit expression. The expression uses published laws of Brownian functionals, including the description of the convex minorant of Brownian motion by Pitman and Uribe Bravo \cite{PUB12}. Interval arithmetic shows that it is negative throughout that range. Further from the edge no such expansion is accurate, so we compare each turning point directly with the edge on the same simulated pairs of bridges. For each pair we record whether the edge exceeds $t'$ while no turning point in a small cell does, or the reverse. The expected value of this record is at least the largest rejection probability in the cell minus the one at the edge. So a negative expected value covers every turning point in the cell, not only a grid of them. A one-sided sign test in each cell shows that the expected value is negative. Reflection, $u\mapsto1-u$, covers turning points left of the middle.
+\begin{itemize}[leftmargin=*,itemsep=3pt]
+\item \emph{Near the edge.} The right piece of the bridge in \cref{lem:seam} is short, of scale $\varepsilon=\sqrt{1-u}$. Four lemmas bound $g(u,t')-g(1,t')$ by an explicit expression in published laws of Brownian functionals, including the description of the convex minorant of Brownian motion by Pitman and Uribe Bravo \cite{PUB12}. Interval arithmetic shows that the expression is negative on this whole range.
+\item \emph{In the middle.} We compare each small cell of turning points with the edge on the same simulated pairs of bridges. On each pair we record $-1$, $0$ or $+1$, so that the expected record is at least the largest rejection probability in the cell minus the one at the edge. A one-sided sign test in each cell shows that the expected record is negative, and this covers every turning point in the cell.
+\item \emph{Left of the middle.} Reflection, $u\mapsto1-u$, reduces these turning points to the cases above.
+\end{itemize}
+\Cref{app:cert} lists the ranges, the numbers of cells and paths, and the error budget. The probability that the two computations together certify a false statement is at most $1.1\cdot10^{-3}$ at each level.
 
-The exact ranges, the number of cells and paths, and the error budget are listed in \cref{app:cert}. The probability that the two computations together certify a false statement is at most $1.1\cdot10^{-3}$ at each level.
-
-\begin{theorem}[worst-case size; certified, conditional]\label{thm:worst}
-Assume the quantile convergence of \cref{sec:setting}, the written lemmas behind \cref{thm:reduction} (\cref{lem:seam} and the proof in \cref{app:proofs}), and the four written lemmas behind the near-edge bound (\cref{app:cert}). On the event that the two certificates above and the bracket for $\qbar_\alpha$ are correct, both $\liminf_nS_n(\alpha)$ and $\limsup_nS_n(\alpha)$ lie in
+\begin{theorem}[worst-case size]\label{thm:worst}
+Under the conditions of \cref{rem:worst}, both $\liminf_nS_n(\alpha)$ and $\limsup_nS_n(\alpha)$ lie in
 \[
 [40.45,\,46.22]\%\ \ (\alpha=10\%),\qquad[28.40,\,33.20]\%\ \ (\alpha=5\%),\qquad[12.67,\,16.79]\%\ \ (\alpha=1\%).
 \]
@@ -66,6 +69,16 @@ Assume the quantile convergence of \cref{sec:setting}, the written lemmas behind
 Because $t'<\qbar_\alpha$, the uniform critical values satisfy $\sqrt n\,q_n(1-\alpha)>t'$ for all large $n$, so rejection implies $\sqrt nD_n>t'$. \Cref{thm:reduction} and the certified edge statement then give $\limsup_nS_n\le g(1,t')=1-F_M(2t')$. For the lower bound, $S_n$ is at least the rejection probability of any fixed law, so \cref{cor:lf}(b) gives $\liminf_nS_n\ge1-F_M(2\qbar_\alpha)\ge1-F_M(2q_+)$, where $q_+$ is the upper end of the bracket for $\qbar_\alpha$. The rigorous enclosure of $F_M$ turns both ends into the numbers shown.
 \end{proof}
 
-These are the intervals of \cref{tab:size} for fixed laws. So in the limit, laws that change with $n$ make the standard test worse by at most the width of these intervals, and the flat shoulder with a thin top comes within that width of the worst case. The two quantities may still differ inside the intervals. We do not know whether $\lim_nS_n$ exists, or whether any law attains it.
+\begin{remark}[what \cref{thm:worst} rests on]\label{rem:worst}
+The theorem is computer-assisted. It holds if the following are true:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=2pt]
+\item the quantile convergence of \cref{sec:setting};
+\item the two certificates above and the bracket for $\qbar_\alpha$, which have the error probabilities stated in \cref{app:cert};
+\item the proof of \cref{thm:reduction} (\cref{lem:seam} and \cref{app:proofs});
+\item the four near-edge lemmas. Their written proofs are not part of this paper. Their deterministic steps are checked in Lean, in the file \texttt{lean/DipTest/NearEdgePrime.lean} of the repository. Lean does not check their probability steps.
+\end{enumerate}
+\end{remark}
 
-The same machinery answers whether $c_\alpha$ also controls the worst-case size. At $t=c_\alpha$ an analogous computation certified, with joint confidence at least $0.99$, that $g(u,c_\alpha)<\alpha$ for $u\in[0.0159,0.9841]$ at 5 percent and $u\in[0.0176,0.9824]$ at 1 percent. A written near-edge theorem covers $u\in[0.9775,1)$; its deterministic steps are checked in Lean, with its published inputs taken as given. On the event that the certificate is correct, and conditional on the same lemmas, $\lim_n\sup_FP_F(\sqrt nD_n>c_\alpha)=\alpha$ at both levels. In words, the corrected cutoff keeps its level uniformly over all continuous unimodal laws in the limit.
+These are the intervals of \cref{tab:size} for fixed laws. So laws that change with $n$ make the standard test worse in the limit by at most the width of these intervals, and the flat shoulder with a thin top comes within that width of the worst case. Whether $\lim_nS_n$ exists, and whether some law attains it, is open.
+
+\paragraph{The corrected cutoff over all laws.} The same method works at $t=c_\alpha$. A certificate with joint confidence at least $0.99$ shows that $g(u,c_\alpha)<\alpha$ for $u\in[0.0159,0.9841]$ at 5 percent and for $u\in[0.0176,0.9824]$ at 1 percent. A written near-edge theorem covers $u\in[0.9775,1)$, and its deterministic steps are checked in Lean, with its published inputs taken as given. Under the same conditions, $\lim_n\sup_FP_F(\sqrt nD_n>c_\alpha)=\alpha$ at both levels: the corrected cutoff keeps its level over all continuous unimodal laws in the limit.

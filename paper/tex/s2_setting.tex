@@ -14,7 +14,7 @@ V_I(h)=\inf\Bigl\{\sup_{x\in I}|h(x)-g(x)| : g \text{ convex on } I\Bigr\},
 and we write $V(h)$ when $I=[0,1]$. The \emph{concave distance} $C_I(h)$ is defined in the same way with concave functions in place of convex ones. A convex function is a unimodal fit whose turning point sits at the right end, so $D(h)\le V(h)$ always. The dip can choose its turning point and the convex distance cannot. \Cref{sec:mechanism} shows that a flat shoulder takes this choice away.
 
 \subsection{The uniform calibration}
-Under the uniform law on $[0,1]$ the distribution of $D_n$ depends only on $n$. Let $q_n(1-\alpha)$ be its $(1-\alpha)$ quantile. The \emph{standard test} at level $\alpha$ rejects unimodality when $D_n\ge q_n(1-\alpha)$. We always mean the exact uniform quantile here, so simulation error in published tables plays no role.
+Under the uniform law on $[0,1]$ the distribution of $D_n$ depends only on $n$. Let $q_n(1-\alpha)$ be its $(1-\alpha)$ quantile, the smallest number $q$ with $P_U(D_n>q)\le\alpha$. The \emph{standard test} at level $\alpha$ rejects unimodality when $D_n\ge q_n(1-\alpha)$. We always mean the exact uniform quantile here, so simulation error in published tables plays no role.
 
 Hartigan and Hartigan proved that under the uniform law $\sqrt nD_n$ converges in distribution to $D(B)$, the dip of a standard Brownian bridge $B$ \cite[Theorem~3]{HH85}. Let $\qbar_\alpha$ be the $(1-\alpha)$ quantile of $D(B)$. If the distribution function of $D(B)$ has neither a jump nor a flat stretch at $\qbar_\alpha$, the scaled critical values converge, $\sqrt n\,q_n(1-\alpha)\to\qbar_\alpha$. This condition is not proved. Every simulation we ran supports it, and we assume it wherever a result is stated in terms of $\qbar_\alpha$. Roughly, $\qbar_{0.05}\approx0.546$ and $\qbar_{0.01}\approx0.63$; certified ranges follow in \cref{sec:numbers}.
 
@@ -27,12 +27,12 @@ be the largest vertical gap between the two. Balabdaoui and Pitman \cite{BP11} f
 \[
 c_\alpha=\tfrac12F_M^{-1}(1-\alpha),
 \]
-so that $P(M/2>c_\alpha)=\alpha$. Its values are $c_{0.10}\approx0.668$, $c_{0.05}\approx0.7314$ and $c_{0.01}\approx0.8599$. \Cref{fig:limits} compares the two limit laws. At the uniform 5 percent cutoff $\qbar_{0.05}$, the law of $M/2$ still has about 30 percent of its mass to the right.
+so that $P(M/2>c_\alpha)=\alpha$. Its values are $c_{0.10}\approx0.668$, $c_{0.05}\approx0.7314$ and $c_{0.01}\approx0.8599$. \Cref{fig:limits} compares the two limit laws: at the uniform 5 percent cutoff $\qbar_{0.05}$, the law of $M/2$ still has about 30 percent of its mass to the right.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.78\linewidth]{figs/fig2_limit_laws.pdf}
-\caption{At the uniform 5 percent cutoff, the shoulder limit $M/2$ still puts about 30 percent of its mass above the cutoff, while the uniform limit puts 5 percent there. Orange: the distribution function of $\sqrt nD_n$ under the uniform law, from $10^5$ simulated samples at $n=12{,}800$. Its 95 percent point is close to $\qbar_{0.05}\approx0.546$. Solid blue: the distribution function of $M/2$, from the table of Balabdaoui and Filali. Dotted blue: $\sqrt{0.9}\,M/2$, the term from a shoulder of mass 0.9. For the running example the full limit is the larger of this term and an independent term $\sqrt{0.1}\,D(B')$ from the top, and the second term hardly ever matters at these cutoffs (\cref{sec:mechanism}). The vertical distance between the curves at $\qbar_{0.05}$ is the excess rejection rate that a shoulder of nearly full mass produces. The constant $c_{0.05}=0.7314$ is the 95 percent point of $M/2$.}
+\caption{The two limit laws. Above the uniform cutoff $\qbar_{0.05}$ the uniform limit has 5 percent of its mass and the shoulder limit $M/2$ about 30 percent. Uniform curve: $10^5$ samples at $n=12{,}800$.}
 \label{fig:limits}
 \end{figure}
 
@@ -58,7 +58,3 @@ A value is \emph{certified} when it comes from a Monte Carlo computation whose c
 \]
 jointly with confidence at least $0.99$, and $\qbar_{0.10}\in[0.4936,\,0.5108]$ with confidence at least $0.998$. The value $0.5452$ in the \texttt{diptest} table at $n=72{,}000$ lies inside the first bracket. Most of the width of the size intervals quoted later comes from these brackets.
 
-\subsection{Related work}\label{sec:prior}
-Besides the work discussed in \cref{sec:intro}, several lines of research are close to ours. Müller and Sawitzki \cite{MS91} and Polonik \cite{Polonik95} developed the excess-mass approach to modality; in one dimension the excess-mass statistic for two modes equals twice the dip \cite{CH98}. Cheng and Hall \cite{CH98} replaced the uniform calibration by one fitted to the curvature at the mode, and in a second paper \cite{CH99} proposed a version of it for smooth shoulders. Davies and Kovac \cite{DK04} used a Kuiper-type distance, which gives a conservative cutoff for the dip that is valid at every $n$, and Hartigan \cite{Hartigan00} proposed a statistic aimed at shoulders and antimodes.
-
-For the one-sided question, Kulikov and Lopuhaä \cite{KL08} proved that the uniform is least favourable for the supremum distance to the least concave majorant, even at fixed $n$. Carolan \cite{Carolan02} obtained closely related results, and Beare \cite{Beare21} extended least favourability to $L^p$ distances in the limit. Carolan and Dykstra \cite{CD99} studied the Grenander estimator at flat regions of a density, which is a one-sided version of the effect that flat stretches have here.

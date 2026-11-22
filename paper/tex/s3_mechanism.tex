@@ -8,7 +8,7 @@ Write $W(w,\varepsilon)$ for the two-step law on $[0,1]$ whose density equals $(
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figs/fig1_mechanism.pdf}
-\caption{A pinned shoulder forces the fit to curve upward over the whole shoulder, and the best such fit to a Brownian bridge misses it by half the largest gap $M$. (a) The null law $W(w,\varepsilon)$: a flat shoulder of mass $1-w$ followed by a thin top. The density jumps up at the start of the top. So every close unimodal fit turns to the right of any fixed point inside the shoulder, and the fit is convex there. (b) On the shoulder, $\sqrt n(F_n-F)$ with its chord removed is close in law to $\sqrt{1-w}$ times a Brownian bridge. One simulated bridge $b$ is shown. A convex function within distance $d$ of $b$ lies below the greatest convex minorant plus $d$, so it cannot reach the top of the largest gap $M$ unless $d\ge M/2$. The minorant shifted up by $M/2$ (dashed) attains this. Under the uniform law the fit may turn anywhere, which gives the smaller limit $D(B)$.}
+\caption{(a) The null law $W(w,\varepsilon)$. (b) One simulated bridge on the shoulder. The best convex fit is its greatest convex minorant raised by $M/2$, and it misses the bridge by $M/2$.}
 \label{fig:mechanism}
 \end{figure}
 
@@ -63,11 +63,11 @@ For $W(0.1,0.005)$ the shoulder mass is $0.9$, and the bound is about $1-F_M(2\c
 \Cref{cor:shoulder} depends on a numerical value of $F_M$ and on the quantile convergence of \cref{sec:setting}. The qualitative statement needs neither.
 
 \begin{theorem}[the uniform calibration fails]\label{thm:fail}
-Fix $\alpha\in(0,1)$ and let $q_n(\alpha)$ be the smallest number with $P_U(D_n>q_n(\alpha))\le\alpha$ under the uniform law. There is a two-step law $W(w,\varepsilon)$ for which
+Fix $\alpha\in(0,1)$. There is a two-step law $W(w,\varepsilon)$ for which
 \[
-\liminf_{n\to\infty}P_{W(w,\varepsilon)}\bigl(D_n>q_n(\alpha)\bigr)>\alpha .
+\liminf_{n\to\infty}P_{W(w,\varepsilon)}\bigl(D_n>q_n(1-\alpha)\bigr)>\alpha .
 \]
-Since $\{D_n>q_n(\alpha)\}\subseteq\{D_n\ge q_n(\alpha)\}$, the same law defeats the standard test.
+Since $\{D_n>q_n(1-\alpha)\}\subseteq\{D_n\ge q_n(1-\alpha)\}$, the same law defeats the standard test.
 \end{theorem}
 
 The idea is a comparison on a single Brownian path. As the shoulder mass tends to one, \cref{thm:shoulder} says the limiting rejection rate approaches $P(V(B)>q)$, where $q$ is the uniform cutoff, while the uniform calibration was built so that $P(D(B)\ge q)$ is about $\alpha$. On every path $D(B)\le V(B)$, because a convex function is an admissible unimodal fit. The inequality is strict with positive probability: a bridge that happens to look like the concave arch $Ku(1-u)$, for a large $K$, is far from every convex function but close to a concave one, so $V(B)$ is large while $D(B)$ is small. A short argument shows that $V(B)$ has no atoms, which turns ``strict on a set of positive probability'' into $P(V(B)>q)>\alpha$. The details are in \cref{app:proofs}.
