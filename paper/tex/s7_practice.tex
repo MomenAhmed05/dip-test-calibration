@@ -1,42 +1,47 @@
-\section{Power and practical use}\label{sec:practice}
+\section{Comparison with other calibrations}\label{sec:practice}
 
-\subsection{Power}
-The corrected test and the standard test apply different cutoffs to the same statistic, so their rejection regions are nested and the corrected test never has more power. The question is how much power it gives up, and how it compares with other cutoffs that are also valid. We compared four constant cutoffs on the dip, on a preregistered panel of 37 laws with 50,000 samples per law and sample size, for $n$ from 50 to 12,800.
+This section compares the corrected cutoff with the calibrations that a user might choose instead: the uniform table, the calibrated dip of Cheng and Hall \cite{CH98}, a learned calibrator, two cutoffs that are valid at every $n$, and, for small samples, multiscale tests. \Cref{tab:power} summarises the comparison and \cref{fig:compare} shows it.
 
-On the null laws of the panel the uniform calibration exceeded its nominal level at every $n$. The corrected cutoff stayed within the preregistered tolerance on every null law: the upper end of each 95 percent interval was at most $\alpha$ plus 0.5 points at the 5 percent level and $\alpha$ plus 0.25 points at the 1 percent level. Its rates rose towards $\alpha$ from below as $n$ grew. Of the three cutoffs that stayed within tolerance, the corrected one is the smallest and therefore the most powerful. \Cref{tab:power} summarises the comparison, and \cref{fig:power} shows two symmetric normal mixtures.
+\subsection{Large samples}
+We ran the uniform table, the corrected cutoff, half the Kuiper distance and the DKW bound on a preregistered panel of 37 laws, with 50,000 samples per law and sample size, for $n$ from 50 to 12,800. Nine laws of the panel are unimodal, and the other 28 are alternatives. All four cutoffs apply to the same statistic, so their rejection regions are nested: a larger cutoff never has more power.
+
+On the unimodal laws the uniform table exceeded its nominal level at every $n$ (\cref{fig:compare}(a)). The corrected cutoff stayed within the preregistered tolerance on every unimodal law: the upper end of each 95 percent interval was at most $\alpha$ plus 0.5 points at the 5 percent level and $\alpha$ plus 0.25 points at the 1 percent level. Its worst rate rose towards $\alpha$ from below as $n$ grew. Half the Kuiper distance and the DKW bound also kept the level, but they pay for it in power (\cref{fig:compare}(b)): on the 14 alternatives whose power reached 80 percent within $n\le12{,}800$, they needed 1.35 to 1.55 and 3.3 to 3.7 times as many observations as the corrected cutoff. The uniform table needs about half as many, because its size is not controlled.
+
+We also tested two calibrations that adapt to the data, and neither keeps the level. Our implementation of the calibrated dip of Cheng and Hall \cite{CH98} reproduces their published table to within 1.2 points. On the same unimodal laws it rejected the uniform law in 30 to 81 percent of samples and $W(0.1,0.005)$ in 50 to 100 percent at the 5 percent level, for $n$ between 50 and 12,800. These laws lie outside the smoothness conditions of that method, and Cheng and Hall \cite{CH99} warned about shoulders themselves. A small neural network trained to interpolate between the uniform and the corrected cutoffs passed an internal audit, but a targeted search then found unimodal laws at which it rejected 16.9 percent of samples at the 5 percent level.
 
 \begin{table}[t]
 \centering
 \small
-\caption{The four constant cutoffs on the panel, $50\le n\le12{,}800$. The last column is the sample size needed for 80 percent power, relative to the corrected cutoff, on the 14 alternatives that reached 80 percent.}
+\caption{Calibrations of the dip at large $n$. Worst false alarms: the largest rate over the nine unimodal laws of the panel, $50\le n\le12{,}800$, at the 5 and 1 percent levels (learned calibrator: the largest found by a targeted search). Relative $n$: sample size for 80 percent power, relative to the corrected cutoff.}
 \label{tab:power}
 \begin{tabular}{llcc}
 \toprule
-Cutoff & Size guarantee & Largest null rate, 5\% / 1\% & Relative sample size \\
+Calibration & Size guarantee & Worst false alarms (\%) & Relative $n$ \\
 \midrule
-Uniform calibration & none & 30.7 / 13.7 & about 0.5 \\
-Corrected, $c_\alpha/\sqrt n$ & in the limit, on $\cC$ & 4.53 / 0.90 & 1 \\
-Half the Kuiper distance & every $n$ & -- & 1.35 to 1.55 \\
-DKW bound & every $n$ & -- & 3.3 to 3.7 \\
+Uniform table (standard) & none & 30.7 / 13.8 & about 0.5 \\
+Cheng and Hall calibration & smooth laws only & 100 / 99.8 & -- \\
+Learned calibrator & none & 16.9 / -- & -- \\
+Corrected, $c_\alpha/\sqrt n$ (this paper) & in the limit, on $\cC$ & 4.53 / 0.90 & 1 \\
+Half the Kuiper distance & every $n$ & 0.72 / 0.11 & 1.35 to 1.55 \\
+DKW bound & every $n$ & 0 / 0 & 3.3 to 3.7 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figs/fig6_power.pdf}
-\caption{Power at the 5 percent level for two symmetric normal mixtures, $50{,}000$ samples per point. The uniform calibration (dotted) does not control the size and is shown for reference only.}
-\label{fig:power}
+\includegraphics[width=\linewidth]{figs/fig6_compare.pdf}
+\caption{(a) Largest false-alarm rate over the unimodal laws of the panel at the 5 percent level (log scale). (b) Power at the 5 percent level for $\frac12N(-2,1)+\frac12N(2,1)$; 50,000 samples per point, 10,000 for Cheng and Hall. (c) UniDip at $n=500$ and the 5 percent level, with the two cutoffs.}
+\label{fig:compare}
 \end{figure}
 
-For small samples we compared the certified cutoffs of \cref{tab:cutoffs} with global tests of unimodality derived from the multiscale methods of Dümbgen and Walther \cite{DW08} and Rufibach and Walther \cite{RW10}. The panel had 16 bimodal laws, 11 sample sizes from 8 to 49, three levels and $10^4$ shared samples per case. The dip with certified cutoffs rejected more often in 81 to 128 of the 176 cases per comparator and level, judged by pointwise 99 percent intervals. After a Holm correction, no comparator did significantly better in any case. The multiscale methods also locate modes, which the dip does not, and we did not compare that ability. With its default grid the block criterion cannot reject at all for $n<23$.
+\subsection{Small samples}
+For $8\le n\le49$ we compared the certified cutoffs of \cref{tab:cutoffs} with global tests of unimodality derived from the multiscale methods of Dümbgen and Walther \cite{DW08} and Rufibach and Walther \cite{RW10}. The panel had 16 bimodal laws, 11 sample sizes from 8 to 49, three levels and $10^4$ shared samples per case. The dip with certified cutoffs rejected more often in 81 to 128 of the 176 cases per comparator and level, judged by pointwise 99 percent intervals. After a Holm correction, no comparator did significantly better in any case. The multiscale methods also locate modes, which the dip does not, and we did not compare that ability. With its default grid the block criterion cannot reject at all for $n<23$.
 
-\subsection{Data that produce flat shoulders}
+\subsection{Where flat shoulders occur}
 The failure needs a density that is flat over a long stretch and then rises sharply. This happens when most of the data are close to uniform and a small part piles up at one end. Collections of $p$-values are the clearest example. In an exploratory screen, mixtures of uniform null $p$-values with a small fraction of strong signals near zero were rejected 11 to 22 percent of the time by the nominal 5 percent test, for $n$ between 200 and 800. The same screen found no material excess for curved pile-ups such as a censored normal, a top-coded Beta law or a zero-inflated law, so the failure does not extend to every pile-up. Among 180 published applications of the dip that we sampled, one applied it to $p$-values \cite{Roy26}.
 
-Clustering methods inherit the calibration of the dip they call. In simulation we changed only the critical values inside the UniDip and SkinnyDip procedures \cite{Maurus16}, from the uniform table to $c_\alpha/\sqrt n$. This cut the probability of splitting a unimodal feature with a flat part or a pile-up into two clusters from 13 to 29 percent down to 1 to 3 percent. The change also costs power: for one three-component mixture at $n=500$ the detection rate fell from 56 to 8.5 percent.
-
-We also tested two other calibrations, and neither keeps the level. Our implementation of the calibrated dip of Cheng and Hall \cite{CH98} reproduces their published table to within 1.2 points. At the 5 percent level, for $n$ between 50 and 12,800, it rejected the uniform law in 30 to 81 percent of samples and $W(0.1,0.005)$ in 50 to 100 percent. These laws lie outside the smoothness conditions of that method, and Cheng and Hall \cite{CH99} warned about shoulders themselves. A small neural network trained to interpolate between the uniform and the corrected cutoffs passed an internal audit, but a targeted search then found unimodal laws at which it rejected 16.9 percent of samples at the 5 percent level.
+Clustering methods inherit the calibration of the dip they call. In simulation we changed only the critical values inside the UniDip and SkinnyDip procedures \cite{Maurus16}, from the uniform table to $c_\alpha/\sqrt n$. This cut the probability of splitting a unimodal feature with a flat part or a pile-up into two clusters from 13 to 29 percent down to 1 to 3 percent (\cref{fig:compare}(c) shows UniDip). The change also costs power: for one two-component mixture at $n=500$ the detection rate fell from 56 to 8.5 percent.
 
 \subsection{Recommendations}
 \noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\setlength{\parskip}{3pt}

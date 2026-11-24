@@ -42,12 +42,12 @@ estimates nothing itself.
 | size map for `4 <= n <= 1000` (Section 6.1, Figure 5) | `dt13/` | `dt13_confirm.py`, `dt13_analysis.py` |
 | `n = 4` (Section 6.3, Table 3) | `dt13/`, `dt14/` | `dt13_n4_*.py`, `dt14_n4_*.py`, `dt14_he2.py` |
 | certified cutoffs for small and moderate `n` (Section 6.2, Table 2, Figure 6) | `dt14/`, `dt9/`, `dt8blk/` | `dt14_r1_n4.py`, `dt14_r1_small.py`, `dt14_r1_small_analysis.py`, `dt9_*.py`, `dt8_block_*.py` |
-| size and power study (Section 7.1, Table 4, Figure 7) | `dt5/` | `dt5_power.py`, `dt5_analysis.py`, `dt5_r5.py` |
-| comparison with the multiscale tests of Dümbgen and Walther and Rufibach and Walther (Section 7.1) | `dt14/mh_power*` | `code/r/mh_*.R` |
-| p-value mixtures and curved pile-ups (Section 7.2) | `dt0c/`, `dt0d/` | `dt0c_screen.py`, `dt0d_screen.py` |
-| UniDip, SkinnyDip and DipMeans (Section 7.2) | `o5ml/`, `o5gap/` | `o5_ml.py`, `o5_gap.py`, `o5_analysis.py`, `o5_hx.py` |
-| Cheng and Hall calibration (Section 7.2) | `dt5b/` | `dt5b_ch98.py`, `ch98.py`, `ch98_fidelity.py` |
-| learned calibrator (Section 7.2) | `o8/`, `o8_redteam/` | `o8_calibrator.py`, `o8_audit.py`, `o8_redteam.py` |
+| size and power comparison (Section 7.1, Table 4, Figure 7(a, b)) | `dt5/` | `dt5_power.py`, `dt5_analysis.py`, `dt5_r5.py` |
+| comparison with the multiscale tests of Dümbgen and Walther and Rufibach and Walther (Section 7.2) | `dt14/mh_power*` | `code/r/mh_*.R` |
+| p-value mixtures and curved pile-ups (Section 7.3) | `dt0c/`, `dt0d/` | `dt0c_screen.py`, `dt0d_screen.py` |
+| UniDip, SkinnyDip and DipMeans (Section 7.3, Figure 7(c)) | `o5ml/`, `o5gap/` | `o5_ml.py`, `o5_gap.py`, `o5_analysis.py`, `o5_hx.py` |
+| Cheng and Hall calibration (Section 7.1, Table 4, Figure 7) | `dt5b/` | `dt5b_ch98.py`, `ch98.py`, `ch98_fidelity.py` |
+| learned calibrator (Section 7.1, Table 4) | `o8/`, `o8_redteam/` | `o8_calibrator.py`, `o8_audit.py`, `o8_redteam.py` |
 | defects found after freezing (Appendix B) | `defects/` | |
 
 Appendix B of the paper lists the confirmatory runs. Each one followed a protocol

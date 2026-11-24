@@ -15,7 +15,7 @@ import numpy as np
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
-from matplotlib.patches import FancyArrowPatch, FancyBboxPatch  # noqa: E402
+from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Patch  # noqa: E402
 from matplotlib.text import Text  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -153,29 +153,27 @@ def fig2():
     d = np.load(os.path.join(DEP, "dt1b", "dips_f0_n12800.npy")) * np.sqrt(12800)
     xs = np.linspace(0.15, 1.15, 600)
     H = np.searchsorted(np.sort(d), xs, side="right") / d.size
-    fig, ax = plt.subplots(figsize=(4.9, 3.0))
-    ax.plot(xs, H, color=C_UNIF, label="uniform law: $\\sqrt{n} D_n$, $n=12{,}800$")
-    ax.plot(xs, F_M(2 * xs), color=C_LF, label="$M/2$ (worst shoulder)")
+    fig, ax = plt.subplots(figsize=(6.6, 2.9))
+    ax.plot(xs, H, color=C_UNIF, label="uniform law:\n$\\sqrt{n} D_n$, $n=12{,}800$")
+    ax.plot(xs, F_M(2 * xs), color=C_LF, label="$M/2$\n(worst shoulder)")
     ax.plot(xs, F_M(2 * xs / np.sqrt(0.9)), color=C_LF, ls=":", lw=1.3,
-            label="$\\sqrt{0.9} M/2$ (shoulder mass 0.9)")
+            label="$\\sqrt{0.9}\\, M/2$\n(shoulder mass 0.9)")
     q = 0.5465
     hq = np.interp(q, xs, H)
     fq = float(F_M(2 * q))
     ax.axvline(q, color=C_GREY, lw=0.7, ls="--")
     ax.annotate("", xy=(q + 0.012, fq), xytext=(q + 0.012, hq),
                 arrowprops={"arrowstyle": "<->", "lw": 1.1, "color": "k"})
-    ax.annotate("excess rejection $\\approx 0.25$\nat the uniform 5% cutoff", xy=(q + 0.016, (fq + hq) / 2),
-                xytext=(0.78, 0.80), fontsize=8.3, va="center",
-                arrowprops={"arrowstyle": "-", "lw": 0.6, "color": C_GREY})
+    ax.text(q + 0.022, 0.58, "excess\nrejection\n$\\approx 0.25$", fontsize=8.3, va="center", ha="left")
     c = C_ALPHA[0.05]
     ax.axvline(c, color=C_LF, lw=0.7, ls="--")
-    ax.text(c + 0.012, 0.42, "$c_{0.05}=0.7314$", color=C_LF, fontsize=8.3)
-    ax.text(q - 0.012, 0.03, "$\\bar q_{0.05}\\approx 0.546$", color=C_GREY, fontsize=8.3, ha="right")
-    ax.set_xlim(0.15, 1.15)
+    ax.text(c + 0.012, 0.04, "$c_{0.05}=0.7314$", color=C_LF, fontsize=8.3)
+    ax.text(q - 0.012, 0.04, "$\\bar q_{0.05}\\approx 0.546$", color=C_GREY, fontsize=8.3, ha="right")
+    ax.set_xlim(0.15, 1.05)
     ax.set_ylim(0, 1.01)
     ax.set_xlabel("$x$ (scale $\\sqrt{n}\\times$ dip)")
     ax.set_ylabel("$P( \\cdot\\leq x)$")
-    ax.legend(loc="lower right", bbox_to_anchor=(1.0, 0.04), frameon=False)
+    ax.legend(loc="center left", bbox_to_anchor=(1.03, 0.5), frameon=False, labelspacing=1.1, handlelength=2.0)
     save(fig, "fig2_limit_laws")
 
 
@@ -272,31 +270,105 @@ def fig5():
 
 
 # ---------------------------------------------------------------- Figure 6
+C_CH = "#000000"  # black: Cheng-Hall calibrated dip
+
+
+def _o5_unidip(n="500", alpha="0.05"):
+    """UniDip split rates (percent) with the uniform table and with the corrected cutoff, from the O5-ML tables."""
+    out = {}
+    path = os.path.join(DEP, "o5ml", "O5ML-TABLES.md")
+    try:
+        with open(path, encoding="utf8") as fh:
+            lines = fh.readlines()
+    except OSError as exc:
+        raise SystemExit(f"cannot read deposit {path}: {exc}") from exc
+    for line in lines:
+        p = [c.strip() for c in line.split("|")]
+        if len(p) > 8 and p[1] == "unidip" and p[4] == n and p[5] == alpha:
+            out[p[2]] = (float(p[6].split()[0]), float(p[7].split()[0]))
+    return out
+
+
 def fig6():
+    """Comparison with other calibrations: worst false-alarm rate, power, and dip-based clustering."""
     a = load("dt5/analysis.json")
-    meths = (("LF", C_LF, "corrected, 0.731"), ("kuiper2", C_KUI, "Kuiper/2, 0.874"),
-             ("dkw", C_DKW, "DKW, 1.358"), ("uniform", C_GREY, "uniform calibration (size not controlled)"))
-    fig, axes = plt.subplots(1, 2, figsize=(6.6, 2.7), sharey=True)
-    for ax, delta in zip(axes, ("1.5", "2.0"), strict=True):
-        for meth, col, lab in meths:
-            r = sorted((x for x in a["cells"] if x["law"][0] == "sym" and str(x["law"][1]) == delta
-                        and x["alpha"] == 0.05 and x["method"] == meth), key=lambda x: x["n"])
-            n = [x["n"] for x in r]
-            p = [100 * x["rate"] for x in r]
-            if meth == "uniform":
-                ax.plot(n, p, ls=":", color=col, lw=1.1, label=lab)
-            else:
-                ax.plot(n, p, "o-", color=col, ms=3.0, label=lab)
-        ax.axhline(80, color="k", lw=0.6, ls="--")
-        ax.set_xscale("log")
-        ax.set_xlabel("sample size $n$")
-        ax.set_title(f"$\\frac{{1}}{{2}}N(-{delta},1)+\\frac{{1}}{{2}}N({delta},1)$, $\\alpha=5\\%$", loc="left")
-    axes[0].set_ylabel("power (%)")
-    handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="lower center", ncol=4, frameon=False, fontsize=7.8,
-               bbox_to_anchor=(0.5, -0.02), columnspacing=1.4, handlelength=1.8)
-    fig.tight_layout(w_pad=1.2, rect=(0, 0.08, 1, 1))
-    save(fig, "fig6_power")
+    b = load("dt5b/dt5b.json")
+    meths = (("uniform", C_UNIF, ":", "uniform table (standard)"), ("CH98", C_CH, "-.", "Cheng and Hall calibration"),
+             ("LF", C_LF, "-", "corrected cutoff (this paper)"), ("kuiper2", C_KUI, "-", "half the Kuiper distance"),
+             ("dkw", C_DKW, "-", "DKW bound"))
+
+    def curve(meth, law_pred):
+        if meth == "CH98":
+            rows = [r for r in b["rows"] if law_pred(r["law"])]
+            ns = sorted({r["n"] for r in rows})
+            return ns, [[r["0.05"]["CH98"]["rate"] for r in rows if r["n"] == n] for n in ns]
+        rows = [x for x in a["cells"] if x["method"] == meth and x["alpha"] == 0.05 and law_pred(x["law"])]
+        ns = sorted({x["n"] for x in rows})
+        return ns, [[x["rate"] for x in rows if x["n"] == n] for n in ns]
+
+    fig = plt.figure(figsize=(6.9, 5.6))
+    gs = fig.add_gridspec(2, 3, height_ratios=[1, 0.95], width_ratios=[1, 1, 0.62], hspace=0.62, wspace=0.38)
+    ax_a, ax_b, ax_leg = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[0, 1]), fig.add_subplot(gs[0, 2])
+    ax_c = fig.add_subplot(gs[1, :])
+
+    # (a) worst false-alarm rate over the null laws of the panel
+    for meth, col, ls, lab in meths:
+        ns, vals = curve(meth, lambda law: law[0] == "null")
+        pts = [(n, 100 * max(v)) for n, v in zip(ns, vals, strict=True) if max(v) > 0]
+        if pts:
+            ax_a.plot([p[0] for p in pts], [p[1] for p in pts], ls=ls, marker="o", ms=2.6, color=col, label=lab)
+        else:
+            ax_a.plot([], [], ls=ls, marker="o", ms=2.6, color=col, label=lab + " (no false alarm seen)")
+    ax_a.axhline(5, color="k", lw=0.7, ls="--")
+    ax_a.text(55, 6.2, "nominal 5%", fontsize=8, va="bottom")
+    ax_a.set_xscale("log")
+    ax_a.set_yscale("log")
+    ax_a.set_ylim(0.01, 150)
+    ax_a.set_yticks([0.01, 0.1, 1, 5, 100])
+    ax_a.set_yticklabels(["0.01", "0.1", "1", "5", "100"])
+    ax_a.set_xlabel("sample size $n$")
+    ax_a.set_ylabel("worst false-alarm rate (%)")
+    ax_a.set_title("(a) Size on the unimodal panel", loc="left")
+
+    # (b) power on the symmetric mixture N(-2,1)/2 + N(2,1)/2
+    for meth, col, ls, _lab in meths:
+        ns, vals = curve(meth, lambda law: law[0] == "sym" and float(law[1]) == 2.0)
+        ax_b.plot(ns, [100 * v[0] for v in vals], ls=ls, marker="o", ms=2.6, color=col)
+    ax_b.axhline(80, color="k", lw=0.6, ls="--")
+    ax_b.set_xscale("log")
+    ax_b.set_ylim(-3, 103)
+    ax_b.set_xlabel("sample size $n$")
+    ax_b.set_ylabel("power (%)")
+    ax_b.set_title("(b) Power, two normals 4 apart", loc="left")
+
+    handles, labels = ax_a.get_legend_handles_labels()
+    ax_leg.axis("off")
+    ax_leg.legend(handles, labels, loc="center left", frameon=False, fontsize=8.3, handlelength=2.2,
+                  labelspacing=0.9, borderaxespad=0.0)
+
+    # (c) dip-based clustering (UniDip, n = 500, alpha = 5%): standard table versus corrected cutoff
+    o5 = _o5_unidip()
+    rows = [("U", "uniform"), ("G", "normal"), ("N1", "flat with a thin top, $W(0.1, 0.005)$"),
+            ("N2_s0.002", "capped sensor reading"), ("R0_s0.002", "ReLU-shaped"),
+            ("P_mix3", "two normals 3 apart (bimodal)")]
+    y = np.arange(len(rows))[::-1]
+    for k, (key, _lab) in enumerate(rows):
+        std, cor = o5[key]
+        ax_c.barh(y[k] + 0.19, std, height=0.36, color=C_UNIF, alpha=0.85)
+        ax_c.barh(y[k] - 0.19, cor, height=0.36, color=C_LF, alpha=0.85)
+        ax_c.text(max(std, 5) + 1.0, y[k], f"{std:g}% $\\to$ {cor:g}%", va="center", fontsize=8)
+    ax_c.axhline(0.5, color=C_GREY, lw=0.6)
+    ax_c.axvline(5, color="k", lw=0.7, ls="--")
+    ax_c.set_yticks(y)
+    ax_c.set_yticklabels([lab for _key, lab in rows])
+    ax_c.set_xlim(0, 66)
+    ax_c.set_xlabel("datasets split into two or more clusters (%)")
+    ax_c.set_title("(c) Dip-based clustering (UniDip, $n=500$): unimodal features above the grey line, "
+                   "a bimodal one below", loc="left")
+    ax_c.legend(handles=[Patch(color=C_UNIF, alpha=0.85, label="uniform table"),
+                         Patch(color=C_LF, alpha=0.85, label="corrected cutoff")],
+                loc="center right", frameon=False, fontsize=8.3)
+    save(fig, "fig6_compare")
 
 
 # ---------------------------------------------------------------- Figure 7
