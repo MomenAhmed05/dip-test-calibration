@@ -11,7 +11,10 @@
 \usepackage[capitalise,noabbrev]{cleveref}
 \usepackage{xcolor}
 \usepackage{microtype}
+\hypersetup{pdftitle={Flat shoulders and a corrected cutoff for the dip test: where the uniform distribution is not the worst case},pdfauthor={Moemen Ahmed}}
 \usepackage{caption}
+% PCI version (main_pci.tex defines \PCIVERSION): continuous line numbers, as the PCI guide requires
+\ifdefined\PCIVERSION\usepackage[mathlines]{lineno}\linenumbers\fi
 \DeclareCaptionFont{capgrey}{\color{black!72}}
 \captionsetup{font={footnotesize,it,capgrey},labelsep=period,justification=centering,margin=1cm,skip=6pt}
 
@@ -62,6 +65,7 @@
 \input{tex/s7_practice}
 \input{tex/s8_discussion}
 \input{tex/disclosure}
+\ifdefined\PCIVERSION\input{tex/pci_backmatter}\fi
 
 \input{tex/biblio}
 
