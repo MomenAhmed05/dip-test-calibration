@@ -5,8 +5,9 @@ Code, deposited outputs, Lean files and paper for
 > M. Ahmed. *Flat shoulders and a corrected cutoff for the dip test: where the
 > uniform distribution is not the worst case.* 2026. The paper is [`paper/main.pdf`](paper/main.pdf).
 
-The dip test of Hartigan and Hartigan (1985) takes its critical values from the
-uniform distribution, on the grounds that among unimodal laws the uniform gives
+The dip test of Hartigan and Hartigan (1985) checks whether data come from a
+distribution with a single peak (unimodal; a single flat top also counts) or with
+several. It takes its critical values from the uniform distribution, on the grounds that among unimodal laws the uniform gives
 the largest dip. The paper shows that this is false. A density that is flat over
 most of its range and then rises to a narrow peak at one end makes the nominal
 5% test reject about one sample in four, however large the sample. Over
