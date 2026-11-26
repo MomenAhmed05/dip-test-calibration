@@ -9,10 +9,10 @@ The dip test of Hartigan and Hartigan (1985) takes its critical values from the
 uniform distribution, on the grounds that among unimodal laws the uniform gives
 the largest dip. The paper shows that this is false. A density that is flat over
 most of its range and then rises to a narrow peak at one end makes the nominal
-5 percent test reject about one sample in four, however large the sample. Over
+5% test reject about one sample in four, however large the sample. Over
 atomless unimodal laws with bounded support and a finite density at the mode, the
-worst limiting rejection rate of the standard 5 percent test lies between 28.4 and
-33.2 percent. Rejecting when the dip exceeds `c_alpha / sqrt(n)`, with
+worst limiting rejection rate of the standard 5% test lies between 28.4% and
+33.2%. Rejecting when the dip exceeds `c_alpha / sqrt(n)`, with
 `c_0.05 = 0.7314` and `c_0.01 = 0.8599`, restores the nominal level on that class
 in the limit. The paper also gives certified cutoffs for small and moderate samples.
 

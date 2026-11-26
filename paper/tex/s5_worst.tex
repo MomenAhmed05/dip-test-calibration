@@ -43,12 +43,12 @@ g(1-\varepsilon^2,t)\ \le\ g(1,t)-\varepsilon^2f_M(2t)\Bigl(t-\frac1{4t}\Bigr)+o
 We state this expansion without proof, because the rest of the paper does not use it. It does not settle the question, for two reasons. It says nothing about turning points far from the edge. And the cutoffs of the standard test lie close to $\frac12$ (between about $0.49$ and $0.64$), where the margin $t-1/(4t)$ is small or even negative.
 
 \subsection{Certifying the edge at the standard cutoffs}
-The standard test uses the cutoff $\qbar_\alpha$, which we know only within its certified bracket. We therefore work at a value $t'$ just below the lower end of that bracket, for example $t'=0.5378$ at the 5 percent level. Every rejection by the standard test eventually has $\sqrt nD_n>t'$, so a bound at $t'$ also bounds the standard test. At $t'$ the edge gives $g(1,t')=1-F_M(2t')$, which is 33.2 percent at the 5 percent level, the upper end of the interval in \cref{tab:size}. We must show that no other turning point does worse. \Cref{fig:dependency}(c) shows how the turning points are covered.
+The standard test uses the cutoff $\qbar_\alpha$, which we know only within its certified bracket. We therefore work at a value $t'$ just below the lower end of that bracket, for example $t'=0.5378$ at the 5\% level. Every rejection by the standard test eventually has $\sqrt nD_n>t'$, so a bound at $t'$ also bounds the standard test. At $t'$ the edge gives $g(1,t')=1-F_M(2t')$, which is 33.2\% at the 5\% level, the upper end of the interval in \cref{tab:size}. We must show that no other turning point does worse. \Cref{fig:dependency}(c) shows how the turning points are covered.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figs/fig7_dependency.pdf}
-\caption{(a) On the probability scale the mode sits at $u=F(m)$. (b) Cutting a bridge at $u$ and removing the dashed line leaves two independent bridges (\cref{lem:seam}). (c) How the turning points are covered at the 5 percent level.}
+\caption{(a) On the probability scale the mode sits at $u=F(m)$. (b) Cutting a bridge at $u$ and removing the dashed line leaves two independent bridges (\cref{lem:seam}). (c) How the turning points are covered at the 5\% level.}
 \label{fig:dependency}
 \end{figure}
 
@@ -81,4 +81,4 @@ The theorem is computer-assisted. It holds if the following are true:
 
 These are the intervals of \cref{tab:size} for fixed laws. So laws that change with $n$ make the standard test worse in the limit by at most the width of these intervals, and the flat shoulder with a thin top comes within that width of the worst case. Whether $\lim_nS_n$ exists, and whether some law attains it, is open.
 
-\paragraph{The corrected cutoff over all laws.} The same method works at $t=c_\alpha$. A certificate with joint confidence at least $0.99$ shows that $g(u,c_\alpha)<\alpha$ for $u\in[0.0159,0.9841]$ at 5 percent and for $u\in[0.0176,0.9824]$ at 1 percent. A written near-edge theorem covers $u\in[0.9775,1)$, and its deterministic steps are checked in Lean, with its published inputs taken as given. Under the same conditions, $\lim_n\sup_FP_F(\sqrt nD_n>c_\alpha)=\alpha$ at both levels: the corrected cutoff keeps its level over all continuous unimodal laws in the limit.
+\paragraph{The corrected cutoff over all laws.} The same method works at $t=c_\alpha$. A certificate with joint confidence at least $0.99$ shows that $g(u,c_\alpha)<\alpha$ for $u\in[0.0159,0.9841]$ at 5\% and for $u\in[0.0176,0.9824]$ at 1\%. A written near-edge theorem covers $u\in[0.9775,1)$, and its deterministic steps are checked in Lean, with its published inputs taken as given. Under the same conditions, $\lim_n\sup_FP_F(\sqrt nD_n>c_\alpha)=\alpha$ at both levels: the corrected cutoff keeps its level over all continuous unimodal laws in the limit.
